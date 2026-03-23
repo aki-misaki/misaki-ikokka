@@ -41,8 +41,12 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <p class="note-chip">Googleカレンダー連携のため、表示まで3秒ほどかかる場合があります。</p>
         <p class="note-text">フレーム内をスクロールすると、2カ月分のスケジュールを閲覧できます。</p>
-        
         <div class="embed-box">
+          <p class="note-text" style="font-size: 0.85rem; background: var(--blue-soft); padding: 10px 15px; border-radius: 8px;">
+            ※もし下のイベント情報がうまく表示されない場合は、お手数ですが以下のリンクから直接ご覧ください。<br>
+            👉 <a href="https://script.google.com/macros/s/AKfycbyfN0Ng6HhjZ1tDPKSRNYce-3eklsHTpZwJDb4dptJlEqofg0KGntWp77rCyjDUNFu8/exec?view=monthly" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">月ごとのイベントを開く</a> ／ 
+            👉 <a href="https://script.google.com/macros/s/AKfycbyfN0Ng6HhjZ1tDPKSRNYce-3eklsHTpZwJDb4dptJlEqofg0KGntWp77rCyjDUNFu8/exec?view=span" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">日またぎのイベントを開く</a>
+          </p>
           <h3 class="sub-title">月ごとのイベント</h3>
           <iframe 
             src="https://script.google.com/macros/s/AKfycbyfN0Ng6HhjZ1tDPKSRNYce-3eklsHTpZwJDb4dptJlEqofg0KGntWp77rCyjDUNFu8/exec?view=monthly" 
