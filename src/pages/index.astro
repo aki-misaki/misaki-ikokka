@@ -20,14 +20,18 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="container">
       <section class="section-block">
-        <div class="intro-card glass-effect">
-          <p>
-            神奈川県三浦半島の【三崎エリア（三崎港・周辺商店街・城ヶ島）】で開催されるイベント情報を収集・整理した、非公式の情報サイトです。<br><br>
-            個人で情報を収集しているため、掲載していないイベントや、一部内容に誤りが含まれる場合があります。情報の抜けは意図的なものではありません。掲載漏れや誤りにお気づきの際は、お問い合わせフォームよりお知らせいただけると幸いです。<br>
-            なお、個人サイトのため、掲載対象は三崎エリア（三崎港・周辺商店街・城ヶ島）に限定しています。<br><br>
-            イベントへの参加や情報のご利用にあたっては、<strong>必ず主催者などの公式発表・公式情報をご確認ください。</strong>
-          </p>
-        </div>
+      <div class="intro-card glass-effect">
+      <p>
+      神奈川県三浦半島の【三崎エリア（三崎港・周辺商店街・城ヶ島）】で開催されるイベント情報を収集・整理した、非公式の情報サイトです。
+      </p>
+      <p>
+      個人で情報を収集しているため、掲載していないイベントや、一部内容に誤りが含まれる場合があります。情報の抜けは意図的なものではありません。掲載漏れや誤りにお気づきの際は、お問い合わせフォームよりお知らせいただけると幸いです。<br>
+      なお、個人サイトのため、掲載対象は三崎エリア（三崎港・周辺商店街・城ヶ島）に限定しています。
+      </p>
+      <p>
+      イベントへの参加や情報のご利用にあたっては、<strong>必ず主催者などの公式発表・公式情報をご確認ください。</strong>
+      </p>
+    </div>
       </section>
 
       <section class="section-block">
@@ -538,12 +542,13 @@ main { position: relative; }
   color: #fff;
   max-width: 850px;
   padding: 30px 30px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 32px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  /* 👇 ここから下を書き換え！ */
+  background: rgba(10, 30, 50, 0.35); /* 白から、引き締まるダークネイビーの半透明に */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* フチの線を少し細く・薄く */
+  backdrop-filter: blur(8px); /* ぼかしを少し弱めて背景を透けさせる */
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 24px; /* 丸みを少しだけシャープに */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* 影を濃くして浮遊感を出す */
 }
 
 .hero-subtitle {
@@ -877,7 +882,7 @@ a.contact-button:focus,
 @media (max-width: 768px) {
   .container { width: calc(100% - 30px); }
   .hero-header { min-height: 280px; border-radius: 0 0 30px 30px; } /* 💡修正：スマホ時はさらに高さを小さく */
-  .hero-text { padding: 20px 15px; }
+  .hero-text { padding: 25px 20px; margin: 0 10px; } /* 左右に少し隙間を作る */
   .hero-lead { font-size: 0.95rem; margin: 10px auto 0; }
   .section-block { padding: 25px 20px; border-radius: 24px; margin-bottom: 30px; }
   .section-header { gap: 12px; align-items: flex-start; padding-bottom: 12px; }
@@ -890,5 +895,15 @@ a.contact-button:focus,
   .contact-desc { padding: 20px; font-size: 0.9rem; }
   .contact-button { width: 100%; padding: 15px; }
   .policy-accordion summary { padding: 20px; }
+}
+/* 👇 これを丸ごと追加 */
+.intro-card p:first-of-type {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--brand-strong);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px dashed rgba(0, 136, 169, 0.15);
 }
 </style>
