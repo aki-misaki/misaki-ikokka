@@ -429,11 +429,9 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
-    // あなたのGASのURL（変更不要です）
     const gasUrl = "https://script.google.com/macros/s/AKfycbyfN0Ng6HhjZ1tDPKSRNYce-3eklsHTpZwJDb4dptJlEqofg0KGntWp77rCyjDUNFu8/exec";
     
     try {
-      // API通信でJSONデータを取得
       const response = await fetch(`${gasUrl}?mode=json&view=both`);
       const data = await response.json();
       
@@ -444,6 +442,8 @@ import Layout from '../layouts/Layout.astro';
       if (!data.monthly || data.monthly.length === 0) {
         monthlyHtml = '<p style="color: #8395a7;">期間内に該当する予定はありません。</p>';
       } else {
+        // 💡 運用中サイトのように「スクロールできる枠」で囲みます
+        monthlyHtml += `<div class="monthly-scroll-wrapper">`; 
         data.monthly.forEach(monthGroup => {
           monthlyHtml += `<h4 class="monthly-heading">${monthGroup.month}</h4>`;
           monthlyHtml += `
@@ -475,6 +475,7 @@ import Layout from '../layouts/Layout.astro';
           });
           monthlyHtml += `</tbody></table>`;
         });
+        monthlyHtml += `</div>`; // スクロール枠の終わり
       }
       document.getElementById("monthly-container").innerHTML = monthlyHtml;
 
@@ -508,7 +509,6 @@ import Layout from '../layouts/Layout.astro';
       }
       document.getElementById("span-container").innerHTML = spanHtml;
 
-      // ローディングを隠してカレンダーを表示
       document.getElementById("loading-message").style.display = "none";
       document.getElementById("calendar-content").style.display = "block";
 
@@ -1027,13 +1027,92 @@ a.contact-button:focus,
 .card-details p { margin: 8px 0; color: var(--text-soft); display: flex; align-items: flex-start; font-size: 0.95em; }
 .card-icon { margin-right: 8px; font-size: 1.2em; margin-top: 1px; }
 
-/* スマホ向けレスポンシブ（テーブルをカード化） */
-@media screen and (max-width:768px) {
-  .monthly-table thead { display: none; }
-  .monthly-table, .monthly-table tbody, .monthly-table tr, .monthly-table td { display: block; width: 100%; }
-  .monthly-table tr { margin-bottom: 16px; border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 2px 8px rgba(0,80,120,0.03); overflow: hidden; }
-  .monthly-table td { text-align: left; padding-left: 32%; position: relative; border-bottom: 1px solid #f4f7f9; padding-top: 12px; padding-bottom: 12px; min-height: 1.5em; white-space: normal; font-size: 0.95em; }
-  .monthly-table td:last-child { border-bottom: none; }
-  .monthly-table td::before { content: attr(data-label); position: absolute; left: 12px; width: 28%; padding-right: 10px; text-align: left; font-weight: 800; color: var(--brand); font-size: 0.9em; }
-}
+/* スマホ向けレスポンシブ（テーブルをカード化して見やすく） */
+  @media screen and (max-width:768px) {
+    .monthly-table thead { display: none; }
+    .monthly-table, .monthly-table tbody, .monthly-table tr { display: block; width: 100%; }
+    .monthly-table tr { margin-bottom: 16px; border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 2px 8px rgba(0,80,120,0.03); }
+    
+    /* 💡 修正: PC版の幅設定を強制リセット(!important)し、横幅を100%広く使う */
+    .monthly-table td { 
+      display: block; 
+      width: 100% !important; 
+      text-align: left; 
+      padding-left: 32%; 
+      position: relative; 
+      border-bottom: 1px solid #f4f7f9; 
+      padding-top: 12px; 
+      padding-bottom: 12px; 
+      font-size: 0.9rem; 
+      box-sizing: border-box;
+    }
+    
+    .monthly-table td:last-child { border-bottom: none; }
+    .monthly-table td::before { content: attr(data-label); position: absolute; left: 12px; width: 28%; font-weight: 800; color: var(--brand); font-size: 0.85rem; }
+  }
+</style>
+<style is:global>
+  /* --- JSで後から追加されるカレンダー専用のスタイル --- */
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+  .schedule-section { margin-bottom: 20px; }
+  
+  .monthly-scroll-wrapper {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+
+  .monthly-scroll-wrapper::-webkit-scrollbar { width: 8px; }
+  .monthly-scroll-wrapper::-webkit-scrollbar-track { background: transparent; border-radius: 4px; }
+  .monthly-scroll-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+  .monthly-heading { margin-top: 25px; margin-bottom: 10px; font-size: 1.15em; color: var(--brand-strong); font-weight: 800; }
+  .monthly-heading:first-child { margin-top: 5px; }
+
+  .monthly-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-bottom: 10px; }
+  .monthly-table th, .monthly-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e0e6ed; word-wrap: break-word; vertical-align: top; font-size: 0.95rem; color: var(--text); }
+  
+  .monthly-table th { font-weight: bold; background: #f4f7f9; border-bottom: 2px solid #e0e6ed; }
+
+  /* 【PC版】列の幅調整 */
+  .monthly-table th:nth-child(1), .monthly-table td:nth-child(1) { width: 15%; }
+  .monthly-table th:nth-child(2), .monthly-table td:nth-child(2) { width: 15%; }
+  .monthly-table th:nth-child(3), .monthly-table td:nth-child(3) { width: 25%; }
+  .monthly-table th:nth-child(4), .monthly-table td:nth-child(4) { width: 25%; }
+  .monthly-table th:nth-child(5), .monthly-table td:nth-child(5) { width: 20%; }
+
+  .monthly-table td a, .card-details a { color: var(--brand); text-decoration: none; transition: 0.2s; font-weight: 700; word-break: break-all; }
+  .monthly-table td a:hover, .card-details a:hover { text-decoration: underline; background: var(--brand-soft); border-radius: 4px; padding: 2px 4px; margin: -2px -4px; }
+
+  .card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; padding-top: 10px; }
+  .event-card { border: 1px solid #e0e6ed; border-radius: 12px; padding: 20px; background: #fff; box-shadow: 0 4px 12px rgba(0,80,120,0.04); display: flex; flex-direction: column; transition: transform 0.2s; }
+  .event-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,80,120,0.08); }
+  .card-title { font-weight: 800; font-size: 1.1em; margin-bottom: 12px; color: var(--brand-strong); line-height: 1.4; border-bottom: 1px dashed #e0e6ed; padding-bottom: 10px; }
+  .card-details p { margin: 8px 0; color: var(--text-soft); display: flex; align-items: flex-start; font-size: 0.95rem; line-height: 1.5; }
+  .card-icon { margin-right: 6px; font-size: 1.1em; }
+
+  /* 📱 スマホ向けレスポンシブ */
+  @media screen and (max-width:768px) {
+    .monthly-table thead { display: none; }
+    .monthly-table, .monthly-table tbody, .monthly-table tr { display: block; width: 100%; }
+    .monthly-table tr { margin-bottom: 16px; border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 2px 8px rgba(0,80,120,0.03); }
+    
+    /* 💡 修正: PC版の幅ルールを最強の力でねじ伏せ、横幅を画面いっぱいに広げる！ */
+    .monthly-table td:nth-child(n) { 
+      display: block; 
+      width: 100% !important; 
+      box-sizing: border-box; /* 余白がはみ出るのを防ぐ魔法 */
+      text-align: left; 
+      padding-left: 32%; 
+      position: relative; 
+      border-bottom: 1px solid #f4f7f9; 
+      padding-top: 12px; 
+      padding-bottom: 12px; 
+      font-size: 0.9rem; 
+    }
+    
+    .monthly-table td:last-child { border-bottom: none; }
+    .monthly-table td::before { content: attr(data-label); position: absolute; left: 12px; width: 28%; font-weight: 800; color: var(--brand); font-size: 0.85rem; }
+  }
 </style>
