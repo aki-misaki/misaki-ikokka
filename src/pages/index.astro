@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="三崎いこっか！— 三崎イベント情報 —" description="神奈川県三浦半島の【三崎エリア（三崎港・周辺商店街・城ヶ島）】で開催されるイベント情報を収集・整理した、非公式の情報ポータルサイトです。">
-  <main>
+<main>
     <header class="hero-header">
       <div class="hero-bg"></div>
       <div class="hero-overlay">
@@ -56,6 +56,28 @@ import Layout from '../layouts/Layout.astro';
           <div id="error-message" style="display: none; color: var(--danger); font-weight: bold; padding: 20px; background: #ffeaa7; border-radius: 8px;">
             情報の読み込みに失敗しました。時間をおいて再度お試しください。
           </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-header">
+          <span class="emoji-icon icon-blue">🐟</span>
+          <h2 class="section-title">三崎市場の入札見学</h2>
+        </div>
+        <p class="note-text">三崎名物「冷凍マグロ」の入札風景は、市場2階の見学通路から一般の方も見学可能です！</p>
+        
+        <div class="market-info-card">
+          <p class="market-time-title">
+            🕒 見学におすすめの時間<br>
+            <span class="market-time-main">午前8時〜9時頃まで</span>
+            <span class="market-time-sub">（※水曜日は午前8時20分頃まで）</span>
+          </p>
+          <p class="market-note">
+            <span class="warning">⚠️ご注意：</span>スケジュールが不定（休市日など）のため、詳細は必ず公式サイトにてご確認ください。
+          </p>
+          <a href="https://www.city.miura.kanagawa.jp/soshiki/umigyosuisanka/umigyosuisanka_shijo/192.html" target="_blank" rel="noopener noreferrer" class="blue-btn">
+            三浦市三崎水産物地方卸売市場 公式サイト <span aria-hidden="true">→</span>
+          </a>
         </div>
       </section>
 
@@ -433,7 +455,7 @@ import Layout from '../layouts/Layout.astro';
       '14.JPG',
       '16.jpg',
       '17.jpg',
-      '5.jpg'      // いくらでも増やせます（最後だけカンマなし）
+      '5.jpg'
     ];
     
     // ランダムに1枚選ぶくじ引き
@@ -441,7 +463,7 @@ import Layout from '../layouts/Layout.astro';
     const heroBg = document.querySelector('.hero-bg');
     
     if (heroBg) {
-      // 選ばれた写真を背景に設定（暗くなるフィルターもそのまま適用）
+      // 選ばれた写真を背景に設定
       heroBg.style.backgroundImage = `linear-gradient(180deg, rgba(0, 50, 80, 0.2), rgba(0, 90, 120, 0.6)), url('https://cdn.jsdelivr.net/gh/aki-misaki/misaki-ikokka@main/images/${randomImg}')`;
     }
     
@@ -478,7 +500,6 @@ import Layout from '../layouts/Layout.astro';
               ? `<a href="${ev.url}" target="_blank" rel="noopener noreferrer">${ev.text}</a>` 
               : ev.text;
 
-            // 💡 tdの順番も変更し、イベント名に専用のクラス(event-title-cell)を付与
             monthlyHtml += `
               <tr>
                 <td class="event-title-cell" data-label="イベント名">${ev.title}</td>
@@ -539,20 +560,19 @@ import Layout from '../layouts/Layout.astro';
 <style is:global>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&family=Cormorant+Garamond:wght@600;700&display=swap');
 
-/* 💡 修正: スマホの横揺れを完全に防止する魔法 */
 html, body { overflow-x: hidden; }
 
 :root {
   --bg: #f4f9f9;
   --surface: rgba(255, 255, 255, 0.84);
   --surface-strong: rgba(255, 255, 255, 0.98);
-  --text: #2c3e50; /* 濃い文字色 */
+  --text: #2c3e50;
   --text-soft: #576574;
   --text-faint: #8395a7;
   --brand: #0088A9;
   --brand-strong: #00607A;
   --brand-soft: #e0f4f8;
-  --blue: #0984e3; /* 💡 鮮やかなリンクブルー */
+  --blue: #0984e3;
   --blue-soft: #e3f2fd;
   --green: #00b894;
   --green-soft: #e8f5e9;
@@ -602,9 +622,17 @@ main { position: relative; }
 .warning { color: var(--danger); font-weight: 700; }
 .update-date { display: inline-flex; align-items: center; padding: 4px 14px; margin-bottom: 20px; background: #f4f7f9; color: var(--text-soft); border: 1px solid rgba(44, 62, 80, 0.08); border-radius: 50px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; } .update-date::before { content: "🕒"; margin-right: 6px; font-size: 0.9rem; }
 
+/* 💡 追加：三崎市場セクション用スタイル */
+.market-info-card { background: var(--blue-soft); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(9, 132, 227, 0.1); }
+.market-time-title { margin-top: 0; font-size: 1.1rem; font-weight: 800; color: var(--brand-strong); line-height: 1.6; }
+.market-time-main { font-size: 1.4rem; color: var(--blue); }
+.market-time-sub { font-size: 0.95rem; color: var(--text-soft); font-weight: 500; }
+.market-note { margin-bottom: 20px; font-weight: 500; color: var(--text-soft); }
+.blue-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; background: #fff; padding: 12px 24px; border-radius: 50px; color: var(--blue) !important; box-shadow: var(--shadow-xs); transition: 0.3s; text-decoration: none !important; }
+.blue-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
 /* 埋め込みエリア */
 .embed-box { padding: 30px; border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.08); box-shadow: var(--shadow-xs); }
-.embed-placeholder { padding: 40px 20px; margin-top: 10px; margin-bottom: 30px; text-align: center; color: var(--text-faint); font-size: 0.95rem; font-weight: bold; border-radius: 20px; border: 2px dashed rgba(0, 136, 169, 0.2); background: var(--bg); } .embed-placeholder:last-child { margin-bottom: 0; }
 .calendar-tall { min-height: 480px; display: grid; place-items: center; }
 
 /* アコーディオン共通 */
@@ -661,6 +689,9 @@ main { position: relative; }
   .contact-desc { padding: 20px; font-size: 0.9rem; }
   .contact-button { width: 100%; padding: 15px; }
   .policy-accordion summary { padding: 20px; }
+  
+  /* 💡 追加：スマホ時のボタンサイズ調整 */
+  .blue-btn { width: 100%; justify-content: center; }
 }
 
 /* --- JSで後から追加されるカレンダー専用のスタイル --- */
@@ -678,10 +709,8 @@ main { position: relative; }
 /* PC版の列幅 */
 .monthly-table th:nth-child(1), .monthly-table td:nth-child(1) { width: 28%; } .monthly-table th:nth-child(2), .monthly-table td:nth-child(2) { width: 12%; } .monthly-table th:nth-child(3), .monthly-table td:nth-child(3) { width: 14%; } .monthly-table th:nth-child(4), .monthly-table td:nth-child(4) { width: 26%; } .monthly-table th:nth-child(5), .monthly-table td:nth-child(5) { width: 20%; }
 
-/* 💡 修正: イベント名（PC版）を濃い色にしてリンクと差別化 */
 .monthly-table td.event-title-cell { font-weight: 800; color: var(--text); font-size: 1.05rem; }
 
-/* 💡 修正: リンク（PC・スマホ共通）を「青色＋アンダーライン」にしてひと目で押せると分かるように！ */
 .monthly-table td a, .card-details a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; transition: 0.2s; font-weight: 700; display: inline-block; word-break: break-all; } 
 .monthly-table td a:hover, .card-details a:hover { text-decoration: none; background: var(--blue-soft); border-radius: 4px; padding: 2px 4px; margin: -2px -4px; }
 
@@ -690,7 +719,6 @@ main { position: relative; }
 .event-card { border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 4px 12px rgba(0,80,120,0.04); display: flex; flex-direction: column; transition: transform 0.2s; overflow: hidden; padding: 0; }
 .event-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,80,120,0.08); }
 
-/* 💡 修正: 日またぎのタイトル色も濃い色に統一！ */
 .card-title { font-weight: 900; font-size: 1.1rem; margin: 0; color: var(--text); line-height: 1.4; background: #f4f7f9; padding: 15px 20px; border-bottom: 1px dashed #cbd5e1; }
 .card-details { padding: 15px 20px 20px; margin-top: auto; }
 .card-details p { margin: 8px 0; color: var(--text-soft); display: flex; align-items: flex-start; font-size: 0.95rem; line-height: 1.5; }
@@ -698,15 +726,37 @@ main { position: relative; }
 
 /* 📱 スマホ向けレスポンシブ */
 @media screen and (max-width:768px) {
+  .container { width: calc(100% - 30px); }
+  .hero-header { min-height: 280px; border-radius: 0 0 30px 30px; }
+  .hero-text { padding: 25px 20px; margin: 0 10px; }
+  .hero-lead { font-size: 0.95rem; margin: 10px auto 0; }
+  .section-block { padding: 25px 20px; border-radius: 24px; margin-bottom: 30px; }
+  .section-header { gap: 12px; align-items: flex-start; padding-bottom: 12px; }
+  .emoji-icon { width: 46px; height: 46px; flex-basis: 46px; font-size: 1.2rem; }
+  .section-title { font-size: 1.3rem; }
+  .embed-box { padding: 18px; }
+  .calendar-tall { min-height: 380px; }
+  .stylish-card { padding: 22px 18px; }
+  .gradient-bg { padding: 30px 20px; }
+  .contact-desc { padding: 20px; font-size: 0.9rem; }
+  .contact-button { width: 100%; padding: 15px; }
+  .policy-accordion summary { padding: 20px; }
+  .blue-btn { width: 100%; justify-content: center; }
+
+  /* 👇 カレンダーのスマホ表示をコンパクトに調整 */
   .monthly-table thead { display: none; }
   .monthly-table, .monthly-table tbody, .monthly-table tr { display: block; width: 100%; }
-  .monthly-table tr { margin-bottom: 18px; border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 2px 8px rgba(0,80,120,0.03); overflow: hidden; }
-  .monthly-table td:nth-child(n) { display: block; width: 100% !important; box-sizing: border-box; text-align: left; padding-left: 65px; position: relative; border-bottom: 1px solid #f4f7f9; padding-top: 12px; padding-bottom: 12px; font-size: 0.95rem; }
+  
+  /* 💡 修正: カード同士の隙間を 18px → 12px に縮小 */
+  .monthly-table tr { margin-bottom: 12px; border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 2px 8px rgba(0,80,120,0.03); overflow: hidden; }
+  
+  /* 💡 修正: 各項目の上下の余白を 12px → 7px に縮小 */
+  .monthly-table td:nth-child(n) { display: block; width: 100% !important; box-sizing: border-box; text-align: left; padding-left: 65px; position: relative; border-bottom: 1px solid #f4f7f9; padding-top: 7px; padding-bottom: 7px; font-size: 0.95rem; }
   .monthly-table td:last-child { border-bottom: none; }
   .monthly-table td::before { content: attr(data-label); position: absolute; left: 15px; width: 45px; font-weight: 800; color: var(--text-soft); font-size: 0.85rem; }
   
-  /* 💡 修正: スマホ版イベント名も濃い色に！ */
-  .monthly-table td.event-title-cell { padding-left: 15px !important; padding-top: 15px !important; padding-bottom: 12px !important; background: #f4f7f9; color: var(--text); font-size: 1.1rem; font-weight: 900; border-bottom: 1px dashed #cbd5e1; }
+  /* 💡 修正: タイトル部分の上下の余白も少し縮小 */
+  .monthly-table td.event-title-cell { padding-left: 15px !important; padding-top: 10px !important; padding-bottom: 8px !important; background: #f4f7f9; color: var(--text); font-size: 1.1rem; font-weight: 900; border-bottom: 1px dashed #cbd5e1; }
   .monthly-table td.event-title-cell::before { display: none; }
 }
 </style>
