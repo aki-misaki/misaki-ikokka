@@ -8,10 +8,6 @@ const {
   title, 
   description = "神奈川県三浦半島の【三崎エリア（三崎港・周辺商店街・城ヶ島）】で開催されるイベント情報を収集・整理した、非公式の情報ポータルサイトです。" 
 } = Astro.props;
-
-// 👇 シェアされた時に表示したい画像のURLをここに入れます
-// （※一旦、トップページと同じ三崎っぽいフリー画像を入れています。後でご自身の好きな画像URLに変更してください）
-const ogImageUrl = "https://images.unsplash.com/photo-1502933691298-84fc14542831?auto=format&fit=crop&w=1200&q=80";
 ---
 
 <!DOCTYPE html>
@@ -19,25 +15,27 @@ const ogImageUrl = "https://images.unsplash.com/photo-1502933691298-84fc14542831
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    
-    <title>{title}</title>
     <meta name="description" content={description} />
+    
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WD4BW2JL');
+    </script>
+    <title>{title}</title>
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:site_name" content="三崎いこっか！" />
-    <meta property="og:locale" content="ja_JP" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageUrl} />
+    <style is:global>
+      /* 💡 以前の設定をここに復活させました */
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&family=Cormorant+Garamond:wght@600;700&display=swap');
+      html, body { overflow-x: hidden; margin: 0; padding: 0; }
+    </style>
   </head>
   <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WD4BW2JL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <slot />
   </body>
 </html>
