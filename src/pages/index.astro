@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="三崎いこっか！— 三崎イベント情報 —" description="神奈川県三浦半島の【三崎エリア（三崎港・周辺商店街・城ヶ島）】で開催されるイベント情報を収集・整理した、非公式の情報ポータルサイトです。">
+<Layout title="三崎いこっか！— 三崎のイベント・観光情報 —" description="神奈川県三浦半島の【三崎エリア（三崎港・周辺商店街・城ヶ島）】で開催されるイベントや観光情報を収集・整理した、非公式の情報ポータルサイトです。週末のおでかけや港町さんぽに。">
 <main>
     <header class="hero-header">
       <div class="hero-bg"></div>
@@ -12,13 +12,13 @@ import Layout from '../layouts/Layout.astro';
           <h1>三崎いこっか！</h1>
           <p class="hero-lead">
             港町さんぽも、週末のおでかけも。<br />
-            三崎・城ヶ島周辺のイベントをまとめたサイトです。
+            三崎・城ヶ島周辺のイベント・観光情報をまとめたサイトです
           </p>
         </div>
       </div>
     </header>
 
-      <div class="container">
+    <div class="container">
       <div class="disclaimer-banner">
         <span aria-hidden="true">⚠️</span>
         <p>当サイトは個人運営の非公式まとめサイトです。お出かけの際は<strong>必ず主催者の公式情報</strong>をご確認ください。</p>
@@ -29,6 +29,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="emoji-icon icon-orange">☀️</span>
           <h2 class="section-title">本日のイベント</h2>
         </div>
+        <p class="note-text">※情報の読込に数秒かかる場合があります。</p>
         <div id="today-container">
           <p class="note-text" id="today-loading">
             <span style="display:inline-block; animation: blink 1s infinite;">⏳</span> 
@@ -42,7 +43,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="emoji-icon">✨</span>
           <h2 class="section-title">直近2カ月のイベント</h2>
         </div>
-        <p class="note-text">フレーム内をスクロールすると、2カ月分のスケジュールを閲覧できます。<br>※表示まで数秒かかる場合があります。</p>
+        <p class="note-text">フレーム内をスクロールすると、2カ月分のスケジュールを閲覧できます。</p>
         <div class="embed-box">
           <p class="note-text" id="loading-message">
             <span style="display:inline-block; animation: blink 1s infinite;">⏳</span> 
@@ -74,16 +75,12 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <p class="note-text">三崎名物「冷凍マグロ」の入札風景は、市場2階の見学通路から一般の方も見学可能です！</p>
         
-        <div class="market-info-card">
-          <p class="market-time-title">
-            🕒 見学におすすめの時間<br>
-            <span class="market-time-main">午前8時〜9時頃まで</span>
-            <span class="market-time-sub">（※水曜日は午前8時20分頃まで）</span>
-          </p>
-          <p class="market-note">
-            <span class="warning">⚠️ご注意：</span>スケジュールが不定（休市日など）のため、詳細は必ず公式サイトにてご確認ください。
-          </p>
-          <a href="https://www.city.miura.kanagawa.jp/soshiki/umigyosuisanka/umigyosuisanka_shijo/192.html" target="_blank" rel="noopener noreferrer" class="blue-btn">
+        <ul class="simple-list">
+          <li><strong>🕒 おすすめの時間：</strong> 午前8時〜9時頃（水曜は8時20分頃まで）</li>
+          <li><strong style="color:var(--danger);">⚠️ ご注意：</strong> 休市日などスケジュールが不定のため、詳細は必ず公式サイトをご確認ください。</li>
+        </ul>
+      <div style="margin-top: 20px;">
+          <a href="https://www.city.miura.kanagawa.jp/soshiki/umigyosuisanka/umigyosuisanka_shijo/192.html" target="_blank" rel="noopener noreferrer" class="compact-btn">
             三浦市三崎水産物地方卸売市場 公式サイト <span aria-hidden="true">→</span>
           </a>
         </div>
@@ -125,110 +122,18 @@ import Layout from '../layouts/Layout.astro';
           </summary>
           <div class="archive-content">
             <div class="archive-grid">
-              <div class="month-card">
-                <div class="month-header">1月</div>
-                <ul>
-                  <li>1日 海南神社 初詣・歳旦祭（三崎：海南神社）</li>
-                  <li>三浦七福神巡り （海南神社含む）</li>
-                  <li>9日 海南神社 初神楽（三崎：海南神社）</li>
-                  <li>15日 チャッキラコ（三崎）</li>
-                  <li>中旬～2月中旬 城ヶ島水仙まつり（城ヶ島）</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">2月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                  <li>午（うま）の日 海南神社 初午祭</li>
-                  <li>11日 海南神社 建国祭</li>
-                  <li>2月上旬 いなりっこ</li>
-                  <li>21日 海南神社 春祭（祈年祭）</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">3月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                  <li>3日 海南神社 ひな祭り</li>
-                  <li>第1日曜日 三浦国際市民マラソン</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">4月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                  <li>上旬 みさき食の神フェスティバル</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">5月</div>
-                <ul>
-                  <li>1日 海南神社 こどもの日</li>
-                  <li>5日 海南神社 月次祭</li>
-                  <li>下旬 道寸祭り（荒井浜海岸）</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">6月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                  <li>第１土曜日 八雲祭</li>
-                  <li>中旬～ 城ヶ島あわび祭り、いせえび祭り</li>
-                  <li>30日 海南神社 大祓</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">7月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                  <li>7日 海南神社 七夕短冊祈願祭</li>
-                  <li>10日 みさき白秋まつり</li>
-                  <li>中旬 海南神社 夏例大祭</li>
-                  <li>7月中 海南神社 夏詣</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">8月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                  <li>中旬 三崎・城ヶ島花火大会</li>
-                  <li>16日 三戸のオショロ流し</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">9月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">10月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                  <li>中旬 みうら夜市</li>
-                  <li>中旬～11月下旬 三浦みかん狩り</li>
-                  <li>下旬～ 三崎港町まつり</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">11月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                  <li>初未日 海南神社 出居戸祭</li>
-                  <li>上旬 面神楽</li>
-                  <li>25日 海南神社 秋祭</li>
-                </ul>
-              </div>
-              <div class="month-card">
-                <div class="month-header">12月</div>
-                <ul>
-                  <li>1日 海南神社 月次祭</li>
-                  <li>上旬 三浦三崎マグロ争奪将棋大会</li>
-                  <li>15日 海南神社 酉の市</li>
-                  <li>29日・30日 年末特別セール</li>
-                  <li>31日 海南神社 除夜祭</li>
-                </ul>
-              </div>
+              <div class="month-card"><div class="month-header">1月</div><ul><li>1日 海南神社 初詣・歳旦祭（三崎：海南神社）</li><li>三浦七福神巡り （海南神社含む）</li><li>9日 海南神社 初神楽（三崎：海南神社）</li><li>15日 チャッキラコ（三崎）</li><li>中旬～2月中旬 城ヶ島水仙まつり（城ヶ島）</li></ul></div>
+              <div class="month-card"><div class="month-header">2月</div><ul><li>1日 海南神社 月次祭</li><li>午（うま）の日 海南神社 初午祭</li><li>11日 海南神社 建国祭</li><li>2月上旬 いなりっこ</li><li>21日 海南神社 春祭（祈年祭）</li></ul></div>
+              <div class="month-card"><div class="month-header">3月</div><ul><li>1日 海南神社 月次祭</li><li>3日 海南神社 ひな祭り</li><li>第1日曜日 三浦国際市民マラソン</li></ul></div>
+              <div class="month-card"><div class="month-header">4月</div><ul><li>1日 海南神社 月次祭</li><li>上旬 みさき食の神フェスティバル</li></ul></div>
+              <div class="month-card"><div class="month-header">5月</div><ul><li>1日 海南神社 こどもの日</li><li>5日 海南神社 月次祭</li><li>下旬 道寸祭り（荒井浜海岸）</li></ul></div>
+              <div class="month-card"><div class="month-header">6月</div><ul><li>1日 海南神社 月次祭</li><li>第１土曜日 八雲祭</li><li>中旬～ 城ヶ島あわび祭り、いせえび祭り</li><li>30日 海南神社 大祓</li></ul></div>
+              <div class="month-card"><div class="month-header">7月</div><ul><li>1日 海南神社 月次祭</li><li>7日 海南神社 七夕短冊祈願祭</li><li>10日 みさき白秋まつり</li><li>中旬 海南神社 夏例大祭</li><li>7月中 海南神社 夏詣</li></ul></div>
+              <div class="month-card"><div class="month-header">8月</div><ul><li>1日 海南神社 月次祭</li><li>中旬 三崎・城ヶ島花火大会</li><li>16日 三戸のオショロ流し</li></ul></div>
+              <div class="month-card"><div class="month-header">9月</div><ul><li>1日 海南神社 月次祭</li></ul></div>
+              <div class="month-card"><div class="month-header">10月</div><ul><li>1日 海南神社 月次祭</li><li>中旬 みうら夜市</li><li>中旬～11月下旬 三浦みかん狩り</li><li>下旬～ 三崎港町まつり</li></ul></div>
+              <div class="month-card"><div class="month-header">11月</div><ul><li>1日 海南神社 月次祭</li><li>初未日 海南神社 出居戸祭</li><li>上旬 面神楽</li><li>25日 海南神社 秋祭</li></ul></div>
+              <div class="month-card"><div class="month-header">12月</div><ul><li>1日 海南神社 月次祭</li><li>上旬 三浦三崎マグロ争奪将棋大会</li><li>15日 海南神社 酉の市</li><li>29日・30日 年末特別セール</li><li>31日 海南神社 除夜祭</li></ul></div>
             </div>
           </div>
         </details>
@@ -421,7 +326,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="policy-toggle" aria-hidden="true"></span>
         </summary>
         <div class="policy-content">
-          <p>「三崎いこっか！— 三崎イベント非公式手帖 —」（以下、「当サイト」といいます。）は、当サイトが提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。</p>
+          <p>「三崎いこっか！— 三崎のイベント・観光情報 —」（以下、「当サイト」といいます。）は、当サイトが提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。</p>
           
           <h4>1. アクセス解析ツールについて</h4>
           <p>当サイトでは、サービスの向上およびサイトの改善のためにGoogleによるアクセス解析ツール「Googleアナリティクス」を利用しています。<br>このGoogleアナリティクスはトラフィックデータの収集のためにCookie（クッキー）を使用しています。このトラフィックデータは匿名で収集されており、個人を特定するものではありません。<br>この機能は、お使いのブラウザ設定からCookieを無効にすることで収集を拒否することが可能です。<br>Googleアナリティクスの利用規約及びプライバシーポリシーに関する詳細は、以下のサイトをご覧ください。</p>
@@ -430,13 +335,16 @@ import Layout from '../layouts/Layout.astro';
             <li><a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer">Google ポリシーと規約</a></li>
           </ul>
 
-          <h4>2. 免責事項</h4>
+          <h4>2. 個人情報の取得と利用目的</h4>
+          <p>当サイトのお問い合わせフォーム等において、お名前やメールアドレス等の個人情報をご入力いただく場合がございます。<br>これらの個人情報は、お問い合わせに対する回答や必要なご連絡にのみ利用し、それ以外の目的では利用いたしません。また、法令に基づく場合を除き、ご本人の同意を得ずに第三者に提供することはありません。</p>
+
+          <h4>3. 免責事項</h4>
           <p>当サイトからリンクやバナー等を経由して他サイトへ移動された場合、移動先で提供される情報・サービス等について、当サイトは一切の責任を負いません。<br>掲載する情報については、可能な限り正確かつ最新の内容をお伝えできるよう努めておりますが、誤情報が含まれたり、情報が古くなったりする場合があります。更新時期や情報源の性質等により、内容に誤りや変更が生じる可能性もありますので、必ず主催者等による公式発表・公式情報をご確認ください。<br>また、本サイトに掲載された情報の利用によって、利用者または第三者に発生した損害や不利益について、運営者は一切の責任を負いかねますので、あらかじめご了承ください。<br>なお、本サイトは急ぎで制作したPC向けサイトのため、スマートフォンでは閲覧しづらい場合があります。順次、改善を進めてまいります。</p>
 
-          <h4>3. プライバシーポリシーの変更について</h4>
+          <h4>4. プライバシーポリシーの変更について</h4>
           <p>当サイトは、個人情報に関して適用される日本の法令を遵守するとともに、本ポリシーの内容を適宜見直しその改善に努めます。<br>修正された最新のプライバシーポリシーは常に本ページにて開示されます。</p>
           
-          <p class="policy-date">制定日: 2025年8月9日</p>
+          <p class="policy-date">制定日: 2025年8月9日<br>改定日: 2026年3月26日</p>
         </div>
       </details>
 
@@ -459,7 +367,6 @@ import Layout from '../layouts/Layout.astro';
       '12.JPG', '14.JPG', '16.jpg', '17.jpg', '5.jpg'
     ];
     
-    // ランダムに1枚選ぶくじ引き
     const randomImg = bgImages[Math.floor(Math.random() * bgImages.length)];
     const heroBg = document.querySelector('.hero-bg');
     
@@ -475,22 +382,19 @@ import Layout from '../layouts/Layout.astro';
       
       if (!data.ok) throw new Error("APIエラー");
 
-      // 👇 追加：GASから届いた「最終更新日」をHTMLに自動ではめ込む
       if (data.meta && data.meta.lastUpdated) {
         document.getElementById("calendar-update-date").innerText = `最終更新日：${data.meta.lastUpdated}`;
       }
 
-      // 👇 本日の日付を取得（日本時間）
       const now = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
       const tYear = now.getFullYear();
       const tMonth = String(now.getMonth() + 1).padStart(2, '0');
       const tDate = String(now.getDate()).padStart(2, '0');
-      const todayStr = `${tYear}/${tMonth}/${tDate}`; // 例：2026/03/26
+      const todayStr = `${tYear}/${tMonth}/${tDate}`;
       const todayZero = new Date(tYear, now.getMonth(), now.getDate()).getTime();
 
       let todayEvents = [];
 
-      // 単日イベントから今日のものを探す
       if (data.monthly) {
         data.monthly.forEach(m => {
           m.events.forEach(ev => {
@@ -501,7 +405,6 @@ import Layout from '../layouts/Layout.astro';
         });
       }
 
-      // 複数日イベントから今日が含まれるものを探す
       if (data.spanEvents) {
         data.spanEvents.forEach(ev => {
           const sTime = new Date(ev.start).getTime();
@@ -512,7 +415,6 @@ import Layout from '../layouts/Layout.astro';
         });
       }
 
-      // 「本日のイベント」表示用HTMLの組み立て
       let todayHtml = "";
       if (todayEvents.length === 0) {
         todayHtml = `<p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">イベントの予定はありません</p>`;
@@ -541,7 +443,6 @@ import Layout from '../layouts/Layout.astro';
       }
       document.getElementById("today-container").innerHTML = todayHtml;
 
-      // --- 月ごとイベント（テーブル）の組み立て ---
       let monthlyHtml = "";
       if (!data.monthly || data.monthly.length === 0) {
         monthlyHtml = '<p style="color: #8395a7;">期間内に該当する予定はありません。</p>';
@@ -582,7 +483,6 @@ import Layout from '../layouts/Layout.astro';
       }
       document.getElementById("monthly-container").innerHTML = monthlyHtml;
 
-      // --- 日またぎイベント（カード）の組み立て ---
       let spanHtml = "";
       if (!data.spanEvents || data.spanEvents.length === 0) {
         spanHtml = '<p style="color: #8395a7;">期間内に該当する予定はありません。</p>';
@@ -625,7 +525,6 @@ import Layout from '../layouts/Layout.astro';
 </script>
 
 <style is:global>
-/* SEO・速度対策：古い@importは削除済み */
 html, body { overflow-x: hidden; }
 
 :root {
@@ -670,25 +569,15 @@ main { position: relative; }
 .hero-overlay { position: relative; z-index: 1; width: 100%; padding: 40px 20px 60px; display: flex; justify-content: center; align-items: center; }
 .hero-text { text-align: center; color: #fff; max-width: 850px; padding: 30px 30px; background: rgba(10, 30, 50, 0.35); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 24px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
 .hero-subtitle { margin: 0 0 12px; font-size: 0.95rem; letter-spacing: 0.25em; font-weight: 700; color: #e0f4f8; }
-.hero-text h1 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 5.5rem); line-height: 1.1; letter-spacing: 0.05em; font-weight: 700; white-space: nowrap; text-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
+
+/* 👇 修正：文字間隔の分だけ右側に余白を作って、ど真ん中に相殺する（text-indent） */
+.hero-text h1 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 5.5rem); line-height: 1.1; letter-spacing: 0.05em; text-indent: 0.05em; font-weight: 700; white-space: nowrap; text-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
+
 .hero-lead { margin: 15px auto 0; font-size: 1.1rem; line-height: 1.8; font-weight: 500; color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
 
-/* 👇 注意書きバナー（和らげる配色へ変更） */
-.disclaimer-banner {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  background: #e6f4ea; /* とても薄いグリーン（和らげる色） */
-  border: 1px solid #c3e6cb;
-  color: #155724; /* 濃いグリーン（テキスト） */
-  padding: 12px 16px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-}
+/* 注意書きバナー */
+.disclaimer-banner { display: flex; align-items: flex-start; gap: 10px; background: #e6f4ea; border: 1px solid #c3e6cb; color: #155724; padding: 12px 16px; border-radius: 12px; margin-bottom: 30px; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
 .disclaimer-banner p { margin: 0; line-height: 1.5; }
-/* 👇 修正：赤文字をやめて、サイトテーマの濃いブルーに（自然な強調） */
 .disclaimer-banner strong { color: var(--brand-strong); }
 
 /* セクション共通 */
@@ -700,57 +589,59 @@ main { position: relative; }
 .section-title { margin: 0; font-size: clamp(1.5rem, 3vw, 1.95rem); line-height: 1.3; font-weight: 900; color: var(--brand-strong); letter-spacing: 0.03em; }
 
 .sub-title { margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--brand); font-size: 1.25rem; font-weight: 900; color: var(--brand-strong); letter-spacing: 0.05em; }
-
 .note-text { margin: 0 0 20px; color: var(--text-soft); font-size: 0.95rem; }
-.note-chip { display: block; background: transparent; color: var(--text-soft); padding: 0 0 0 1.2em; border: none; border-radius: 0; font-size: 0.9rem; font-weight: 500; margin-bottom: 8px; position: relative; } .note-chip::before { content: "※"; position: absolute; left: 0; color: var(--brand); font-weight: 900; }
 .warning { color: var(--danger); font-weight: 700; }
 .update-date { display: inline-flex; align-items: center; padding: 4px 14px; margin-bottom: 20px; background: #f4f7f9; color: var(--text-soft); border: 1px solid rgba(44, 62, 80, 0.08); border-radius: 50px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; } .update-date::before { content: "🕒"; margin-right: 6px; font-size: 0.9rem; }
 
-/* 三崎市場セクション用スタイル */
-.market-info-card { background: var(--blue-soft); padding: 25px; border-radius: var(--radius-md); border: 1px solid rgba(9, 132, 227, 0.1); }
-.market-time-title { margin-top: 0; font-size: 1.1rem; font-weight: 800; color: var(--brand-strong); line-height: 1.6; }
-.market-time-main { font-size: 1.4rem; color: var(--blue); }
-.market-time-sub { font-size: 0.95rem; color: var(--text-soft); font-weight: 500; }
-.market-note { margin-bottom: 20px; font-weight: 500; color: var(--text-soft); }
-.blue-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; background: #fff; padding: 12px 24px; border-radius: 50px; color: var(--blue) !important; box-shadow: var(--shadow-xs); transition: 0.3s; text-decoration: none !important; }
-.blue-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+/* 👇 修正：市場セクションをシンプルなリスト化 */
+.simple-list { margin: 0; padding-left: 1.5em; color: var(--text); font-size: 0.95rem; }
+.simple-list li { margin-bottom: 10px; }
+/* 👇 修正：上品でスッキリしたコンパクトボタン */
+.compact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--blue) !important;
+  background: #fff;
+  border: 1px solid var(--blue-soft);
+  padding: 10px 22px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(9, 132, 227, 0.08);
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+}
+.compact-btn:hover {
+  background: var(--blue-soft);
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(9, 132, 227, 0.15);
+}
 
 /* 埋め込みエリア */
 .embed-box { padding: 30px; border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.08); box-shadow: var(--shadow-xs); }
-.calendar-tall { min-height: 480px; display: grid; place-items: center; }
 
-/* アコーディオン共通 */
-.modern-details { padding: 25px; border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); }
-.modern-details summary { display: flex; align-items: center; justify-content: space-between; list-style: none; cursor: pointer; font-size: 1.1rem; font-weight: 800; color: var(--brand); }
+/* 👇 修正：アーカイブのボタン（アコーディオン）を細身でスマートに */
+.modern-details { border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); }
+.modern-details summary { display: flex; align-items: center; justify-content: space-between; list-style: none; cursor: pointer; font-size: 1.05rem; font-weight: 800; color: var(--brand); padding: 15px 20px; }
 .modern-details summary::-webkit-details-marker { display: none; }
-.archive-toggle, .policy-toggle { position: relative; flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%; background: var(--brand-soft); border: 1px solid rgba(0, 136, 169, 0.1); transition: 0.3s; } .archive-toggle::before, .archive-toggle::after, .policy-toggle::before, .policy-toggle::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--brand); border-radius: 2px; transform: translate(-50%, -50%); } .archive-toggle::before, .policy-toggle::before { width: 14px; height: 2px; } .archive-toggle::after, .policy-toggle::after { width: 2px; height: 14px; transition: transform 0.3s; } .modern-details[open] .archive-toggle::after, .modern-details[open] .policy-toggle::after { transform: translate(-50%, -50%) rotate(90deg) scaleY(0); }
-.archive-content { margin-top: 25px; padding-top: 25px; border-top: 2px dashed rgba(0, 136, 169, 0.1); }
+.archive-toggle, .policy-toggle { position: relative; flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-soft); border: 1px solid rgba(0, 136, 169, 0.1); transition: 0.3s; } .archive-toggle::before, .archive-toggle::after, .policy-toggle::before, .policy-toggle::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--brand); border-radius: 2px; transform: translate(-50%, -50%); } .archive-toggle::before, .policy-toggle::before { width: 12px; height: 2px; } .archive-toggle::after, .policy-toggle::after { width: 2px; height: 12px; transition: transform 0.3s; } .modern-details[open] .archive-toggle::after, .modern-details[open] .policy-toggle::after { transform: translate(-50%, -50%) rotate(90deg) scaleY(0); }
+.archive-content { padding: 0 20px 20px; border-top: 1px dashed rgba(0, 136, 169, 0.1); margin-top: 5px; padding-top: 20px; }
+.archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
+.month-card { padding: 20px; border-radius: 16px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); position: relative; overflow: hidden; } .month-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--brand); }
+.month-header { margin-bottom: 12px; font-size: 1.15rem; font-weight: 900; color: var(--brand); } .month-card ul { margin: 0; padding: 0; list-style: none; font-size: 0.9rem; } .month-card li { position: relative; margin-bottom: 8px; padding-left: 16px; } .month-card li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
 
-/* アーカイブグリッド */
-.archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-.month-card { padding: 24px 20px; border-radius: 24px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); position: relative; overflow: hidden; } .month-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--brand); }
-.month-header { margin-bottom: 15px; font-size: 1.25rem; font-weight: 900; color: var(--brand); } .month-card ul { margin: 0; padding: 0; list-style: none; font-size: 0.95rem; } .month-card li { position: relative; margin-bottom: 10px; padding-left: 18px; } .month-card li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
-
-/* 👇 修正：リンクカード集（枠線ハッキリ・並び順変更） */
+/* リンクカード集 */
 .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
 .stylish-card { display: flex; flex-direction: column; padding: 28px 24px; border-radius: 20px; background: #ffffff; border: 2px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); } 
 .stylish-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
 .stylish-card h3 { margin: 0 0 8px; font-size: 1.2rem; font-weight: 900; color: var(--text); transition: 0.2s; } 
 .card-badge { align-self: flex-start; padding: 6px 14px; margin-bottom: 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; } 
 .stylish-card p { margin: 0; color: var(--text-soft); font-size: 0.95rem; line-height: 1.6; }
-
-/* ホバー時の枠線の色付け */
-.theme-blue .card-badge { background: var(--blue-soft); color: var(--blue); } 
-.theme-blue .stylish-card:hover { border-color: var(--blue); } 
-.theme-blue .stylish-card:hover h3 { color: var(--blue); } 
-
-.theme-green .card-badge { background: var(--green-soft); color: var(--green); } 
-.theme-green .stylish-card:hover { border-color: var(--green); } 
-.theme-green .stylish-card:hover h3 { color: var(--green); } 
-
-.theme-orange .card-badge { background: var(--orange-soft); color: var(--orange); } 
-.theme-orange .stylish-card:hover { border-color: var(--orange); } 
-.theme-orange .stylish-card:hover h3 { color: var(--orange); }
+.theme-blue .card-badge { background: var(--blue-soft); color: var(--blue); } .theme-blue .stylish-card:hover { border-color: var(--blue); } .theme-blue .stylish-card:hover h3 { color: var(--blue); } 
+.theme-green .card-badge { background: var(--green-soft); color: var(--green); } .theme-green .stylish-card:hover { border-color: var(--green); } .theme-green .stylish-card:hover h3 { color: var(--green); } 
+.theme-orange .card-badge { background: var(--orange-soft); color: var(--orange); } .theme-orange .stylish-card:hover { border-color: var(--orange); } .theme-orange .stylish-card:hover h3 { color: var(--orange); }
 
 /* お問い合わせ */
 .gradient-bg { position: relative; overflow: hidden; padding: clamp(28px, 4vw, 52px); border-radius: 30px; background: radial-gradient(circle at top right, rgba(255,255,255,0.20), transparent 24%), linear-gradient(135deg, #135b85 0%, #1e7cad 52%, #50a8c5 100%); color: #fff; text-align: center; box-shadow: 0 24px 60px rgba(20, 87, 128, 0.22); }
@@ -762,8 +653,8 @@ main { position: relative; }
 
 /* プライバシーポリシー */
 .policy-accordion { padding: 0; border: none; background: transparent; box-shadow: none; margin-bottom: 50px; }
-.policy-accordion summary { padding: 20px 30px; background: #fff; border-radius: 20px; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); } .policy-accordion[open] summary { border-radius: 20px 20px 0 0; border-bottom: 1px solid rgba(0, 136, 169, 0.08); }
-.policy-content { padding: 30px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); border-top: none; border-radius: 0 0 20px 20px; }
+.policy-accordion summary { padding: 15px 20px; background: #fff; border-radius: 16px; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); } .policy-accordion[open] summary { border-radius: 16px 16px 0 0; border-bottom: 1px solid rgba(0, 136, 169, 0.08); }
+.policy-content { padding: 25px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); border-top: none; border-radius: 0 0 16px 16px; }
 .policy-content h4 { color: var(--text); font-size: 1.05rem; } .policy-content ul { padding-left: 1.2em; } .policy-content li { margin-bottom: 6px; }
 .policy-date { margin-top: 18px; text-align: right; color: var(--text); font-weight: 700; }
 
@@ -773,38 +664,26 @@ main { position: relative; }
 
 /* --- JSで後から追加されるカレンダー専用のスタイル --- */
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-
-/* 👇 新機能：本日のイベント用カードデザイン */
 .today-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
 .today-card { background: #fff; border-left: 5px solid var(--orange); border-radius: 8px; padding: 18px 20px; box-shadow: var(--shadow-xs); }
 .today-title { font-weight: 800; font-size: 1.15rem; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
 .today-info { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.95rem; color: var(--text-soft); }
 .today-info a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
-
 .schedule-section { margin-bottom: 20px; width: 100%; box-sizing: border-box; }
 .monthly-scroll-wrapper { max-height: 600px; overflow-y: auto; overflow-x: hidden; padding-right: 8px; }
 .monthly-scroll-wrapper::-webkit-scrollbar { width: 6px; } .monthly-scroll-wrapper::-webkit-scrollbar-track { background: transparent; } .monthly-scroll-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 .monthly-heading { margin-top: 25px; margin-bottom: 10px; font-size: 1.15em; color: var(--brand-strong); font-weight: 800; } .monthly-heading:first-child { margin-top: 5px; }
-
 .monthly-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-bottom: 10px; }
 .monthly-table th, .monthly-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e0e6ed; word-wrap: break-word; vertical-align: top; font-size: 0.95rem; color: var(--text); }
 .monthly-table th { font-weight: bold; background: #f4f7f9; border-bottom: 2px solid #e0e6ed; }
-
-/* PC版の列幅 */
 .monthly-table th:nth-child(1), .monthly-table td:nth-child(1) { width: 28%; } .monthly-table th:nth-child(2), .monthly-table td:nth-child(2) { width: 12%; } .monthly-table th:nth-child(3), .monthly-table td:nth-child(3) { width: 14%; } .monthly-table th:nth-child(4), .monthly-table td:nth-child(4) { width: 26%; } .monthly-table th:nth-child(5), .monthly-table td:nth-child(5) { width: 20%; }
-
 .monthly-table td.event-title-cell { font-weight: 800; color: var(--text); font-size: 1.05rem; }
-
 .monthly-table td a, .card-details a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; transition: 0.2s; font-weight: 700; display: inline-block; word-break: break-all; } 
 .monthly-table td a:hover, .card-details a:hover { text-decoration: none; background: var(--blue-soft); border-radius: 4px; padding: 2px 4px; margin: -2px -4px; }
-
-/* 日またぎイベント */
 .card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; padding-top: 10px; width: 100%; }
 .event-card { border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 4px 12px rgba(0,80,120,0.04); display: flex; flex-direction: column; transition: transform 0.2s; overflow: hidden; padding: 0; }
 .event-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,80,120,0.08); }
-
 .card-title { font-weight: 900; font-size: 1.1rem; margin: 0; color: var(--text); line-height: 1.4; background: #f4f7f9; padding: 15px 20px; border-bottom: 1px dashed #cbd5e1; }
-/* 👇 修正：日またぎイベントの下空白を消すために margin-top を削除 */
 .card-details { padding: 15px 20px 20px; }
 .card-details p { margin: 8px 0; color: var(--text-soft); display: flex; align-items: flex-start; font-size: 0.95rem; line-height: 1.5; }
 .card-icon { margin-right: 6px; font-size: 1.1em; }
@@ -815,29 +694,18 @@ main { position: relative; }
   .hero-header { min-height: 280px; border-radius: 0 0 30px 30px; }
   .hero-text { padding: 25px 20px; margin: 0 10px; }
   .hero-lead { font-size: 0.95rem; margin: 10px auto 0; }
+  .disclaimer-banner { padding: 10px 14px; font-size: 0.8rem; margin-bottom: 25px; margin-top: -15px; }
   .section-block { padding: 25px 20px; border-radius: 24px; margin-bottom: 30px; }
   .section-header { gap: 12px; align-items: flex-start; padding-bottom: 12px; }
   .emoji-icon { width: 46px; height: 46px; flex-basis: 46px; font-size: 1.2rem; }
   .section-title { font-size: 1.3rem; }
   .embed-box { padding: 18px; }
-  .calendar-tall { min-height: 380px; }
   .stylish-card { padding: 22px 18px; }
   .gradient-bg { padding: 30px 20px; }
   .contact-desc { padding: 20px; font-size: 0.9rem; }
   .contact-button { width: 100%; padding: 15px; }
-  .policy-accordion summary { padding: 20px; }
-  .blue-btn { width: 100%; justify-content: center; }
   
   .today-info { flex-direction: column; gap: 6px; }
-  /* 👇 スマホ時：バナーをさらにコンパクトにして上に詰める */
-  .disclaimer-banner {
-    padding: 10px 14px;
-    font-size: 0.8rem;
-    margin-bottom: 25px;
-    margin-top: -15px; /* 写真との隙間を詰める魔法 */
-  }
-
-  /* カレンダーのスマホ表示をコンパクトに調整 */
   .monthly-table thead { display: none; }
   .monthly-table, .monthly-table tbody, .monthly-table tr { display: block; width: 100%; }
   .monthly-table tr { margin-bottom: 12px; border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 2px 8px rgba(0,80,120,0.03); overflow: hidden; }
