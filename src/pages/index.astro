@@ -515,7 +515,7 @@ import Layout from '../layouts/Layout.astro';
       // 「本日のイベント」表示用HTMLの組み立て
       let todayHtml = "";
       if (todayEvents.length === 0) {
-        todayHtml = `<p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">本日のイベント予定はありません</p>`;
+        todayHtml = `<p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">イベントの予定はありません</p>`;
       } else {
         todayHtml = `<div class="today-grid">`;
         todayEvents.forEach(ev => {
