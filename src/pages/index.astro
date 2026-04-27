@@ -20,29 +20,30 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </header>
 
-<div class="container">
-  <section class="intro-simple">
-    <p class="intro-desc">
-      三崎港・三崎下町商店街・城ヶ島周辺のイベントや、観光・町歩きに役立つ情報をまとめた個人運営の非公式まとめサイトです。
-    </p>
-    <p class="intro-warning">
-      <span aria-hidden="true">⚠️</span> お出かけの際は<strong>必ず主催者の公式情報</strong>をご確認ください。
-    </p>
+    <div class="container">
+      
+      <section class="intro-simple">
+        <p class="intro-desc">
+          三崎港・三崎下町商店街・城ヶ島周辺のイベントや、観光・町歩きに役立つ情報をまとめた<strong>個人運営の非公式まとめサイト</strong>です。
+        </p>
+        <p class="intro-warning">
+          <span aria-hidden="true">⚠️</span> お出かけの際は<strong>必ず主催者の公式情報</strong>をご確認ください。
+        </p>
 
-<details class="intro-details">
-  <summary>三崎いこっか！について詳しく見る</summary>
-  <div class="intro-details-content">
-    <p>
-      三崎は、まぐろグルメや港町の商店街、海南神社、海の見える散策などを気軽に楽しめるエリアです。
-      イベントの前後に三崎下町を歩したり、海の駅うらり周辺で買い物をしたり、城ヶ島で海辺の景色を楽しむのもおすすめです。
-    </p>
-    <p>
-      「三崎いこっか！」では、三崎・城ヶ島周辺のイベント情報を中心に、観光、町歩き、港町散歩に役立つリンクや年間行事の目安をまとめています。
-      掲載情報は個人が独自に収集したもので、各イベントの主催者や関係団体とは一切関係ありません。
-    </p>
-  </div>
-</details>
-  </section>
+        <details class="intro-details">
+          <summary>三崎いこっか！について詳しく見る</summary>
+          <div class="intro-details-content">
+            <p>
+              三崎は、まぐろグルメや港町の商店街、海南神社、海の見える散策などを気軽に楽しめるまちです。
+              イベントの前後に三崎下町を歩いたり、海の駅うらり周辺で買い物をしたり、城ヶ島で海辺の景色を楽しむのもおすすめです。
+            </p>
+            <p>
+              「三崎いこっか！」では、三崎・城ヶ島周辺のイベント情報を中心に、観光、町歩き、港町さんぽに役立つリンクや年間行事の目安をまとめています。
+              掲載情報は個人が独自に収集したもので、各イベントの主催者や関係団体とは一切関係ありません。
+            </p>
+          </div>
+        </details>
+      </section>
 
       <section class="section-block" style="background: linear-gradient(145deg, #ffffff, #f0f7f9); border: 2px solid rgba(0, 136, 169, 0.2);">
         <div class="section-header">
@@ -497,13 +498,17 @@ a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover 
 /* ヒーローエリア */
 .hero-header { position: relative; min-height: 400px; display: grid; place-items: center; overflow: hidden; margin-bottom: 40px; border-radius: 0 0 40px 40px; }
 .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.02); }
+/* 👇 復活：.hero-overlayのCSSを追加 */
+.hero-overlay { position: relative; z-index: 1; width: 100%; padding: 40px 20px 60px; display: flex; justify-content: center; align-items: center; }
 .hero-text { text-align: center; color: #fff; max-width: 850px; padding: 30px; background: rgba(10, 30, 50, 0.5); backdrop-filter: blur(8px); border-radius: 24px; }
 .hero-text h1 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 5.5rem); letter-spacing: 0.05em; text-indent: 0.05em; font-weight: 700; }
 
 /* 導入部・スリム化 */
-.intro-simple { margin: -12px auto 36px; padding: 18px 22px; max-width: 920px; text-align: left; background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(0, 136, 169, 0.12); border-radius: 18px; box-shadow: 0 6px 18px rgba(0, 80, 120, 0.04); }
+/* 👇 修正：左ライン付きの洗練されたカード風スタイルに */
+.intro-simple { position: relative; margin: -12px auto 36px; padding: 18px 22px 18px 24px; max-width: 920px; text-align: left; background: rgba(255, 255, 255, 0.78); border: 1px solid rgba(0, 136, 169, 0.12); border-left: 5px solid var(--brand); border-radius: 18px; box-shadow: 0 6px 18px rgba(0, 80, 120, 0.04); }
 .intro-desc { font-size: 0.98rem; color: var(--text); margin: 0 0 6px; line-height: 1.65; }
-.intro-warning { font-size: 0.88rem; color: var(--danger); margin: 0 0 12px; font-weight: 700; }
+/* 👇 修正：やわらかい角丸バッジ風の警告表示 */
+.intro-warning { display: inline-flex; align-items: center; gap: 4px; font-size: 0.86rem; color: var(--danger); margin: 2px 0 12px; padding: 4px 10px; background: rgba(214, 48, 49, 0.06); border-radius: 999px; font-weight: 700; }
 .intro-warning strong { text-decoration: underline; text-underline-offset: 3px; }
 .intro-details { display: block; text-align: left; background: transparent; border: none; border-radius: 0; padding: 0; max-width: none; margin: 0; }
 .intro-details summary { cursor: pointer; color: var(--brand); font-weight: 800; font-size: 0.9rem; list-style: none; display: inline-flex; align-items: center; justify-content: flex-start; }
@@ -595,9 +600,14 @@ a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover 
   .container { width: calc(100% - 30px); }
   .hero-header { min-height: 340px; }
   .hero-bg { background-position: center top; }
-  .hero-text { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(10, 30, 50, 0.5); padding: 25px 15px; box-shadow: none; }
+  /* 👇 復活：スマホ用の.hero-overlay指定を追加！ */
+  .hero-overlay { padding: 32px 18px 44px; }
+  .hero-text { width: min(100%, 340px); margin: 0 auto; backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(10, 30, 50, 0.5); padding: 25px 15px; box-shadow: none; }
   
-  /* 明るい写真でも文字がクッキリ読めるように文字影を強化 */
+  /* スマホの文字サイズをダイナミックに調整し、影をつけて読みやすく */
+  .hero-text h1 { font-size: clamp(2.4rem, 12vw, 4rem); line-height: 1.1; }
+  .hero-subtitle { margin: 0 0 8px; font-size: 0.78rem; letter-spacing: 0.16em; }
+  .hero-lead { margin: 12px auto 0; font-size: 0.92rem; line-height: 1.65; }
   .hero-text h1, .hero-lead, .hero-subtitle { text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45); }
   
   .intro-simple { padding: 15px; margin-bottom: 30px; }
