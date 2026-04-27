@@ -575,22 +575,22 @@ a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover 
 
 /* リンクカード集 */
 .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-.stylish-card { padding: 28px 24px; border-radius: 20px; border: 2px solid #cbd5e1; background: #fff; display: flex; flex-direction: column; transition: all 0.3s; }
+.stylish-card { display: flex; flex-direction: column; padding: 28px 24px; border-radius: 20px; background: #ffffff; border: 2px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); } 
 .stylish-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-.card-badge { align-self: flex-start; padding: 6px 14px; margin-bottom: 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; background: var(--blue-soft); color: var(--blue); }
-/* 👇 修正：テーマカラー（ホバー色・バッジ色）の復活 */
-.theme-blue .card-badge { background: var(--blue-soft); color: var(--blue); }
-.theme-blue .stylish-card:hover { border-color: var(--blue); }
-.theme-green .card-badge { background: var(--green-soft); color: var(--green); }
-.theme-green .stylish-card:hover { border-color: var(--green); }
-.theme-orange .card-badge { background: var(--orange-soft); color: var(--orange); }
-.theme-orange .stylish-card:hover { border-color: var(--orange); }
+.stylish-card h3 { margin: 0 0 8px; font-size: 1.2rem; font-weight: 900; color: var(--text); transition: 0.2s; } 
+.card-badge { align-self: flex-start; padding: 6px 14px; margin-bottom: 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; } 
+.stylish-card p { margin: 0; color: var(--text-soft); font-size: 0.95rem; line-height: 1.6; }
+.theme-blue .card-badge { background: var(--blue-soft); color: var(--blue); } .theme-blue .stylish-card:hover { border-color: var(--blue); } .theme-blue .stylish-card:hover h3 { color: var(--blue); } 
+.theme-green .card-badge { background: var(--green-soft); color: var(--green); } .theme-green .stylish-card:hover { border-color: var(--green); } .theme-green .stylish-card:hover h3 { color: var(--green); } 
+.theme-orange .card-badge { background: var(--orange-soft); color: var(--orange); } .theme-orange .stylish-card:hover { border-color: var(--orange); } .theme-orange .stylish-card:hover h3 { color: var(--orange); }
 
 /* お問い合わせ */
-.gradient-bg { padding: 40px; border-radius: 30px; background: linear-gradient(135deg, #135b85 0%, #1e7cad 52%, #50a8c5 100%); color: #fff; text-align: center; }
-.contact-desc { padding: 22px; border-radius: 22px; background: rgba(255,255,255,0.12); margin-bottom: 24px; text-align: left; }
-.contact-button { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--brand) !important; font-weight: 800; }
-
+.gradient-bg { position: relative; overflow: hidden; padding: clamp(28px, 4vw, 52px); border-radius: 30px; background: radial-gradient(circle at top right, rgba(255,255,255,0.20), transparent 24%), linear-gradient(135deg, #135b85 0%, #1e7cad 52%, #50a8c5 100%); color: #fff; text-align: center; box-shadow: 0 24px 60px rgba(20, 87, 128, 0.22); }
+.gradient-bg::before, .gradient-bg::after { content: ""; position: absolute; border-radius: 999px; background: rgba(255,255,255,0.08); pointer-events: none; } .gradient-bg::before { width: 220px; height: 220px; right: -50px; top: -80px; } .gradient-bg::after { width: 180px; height: 180px; left: -40px; bottom: -80px; }
+.contact-title { position: relative; z-index: 1; margin: 0 0 22px; font-size: clamp(1.5rem, 3vw, 2.05rem); line-height: 1.35; font-weight: 900; text-align: center; }
+.contact-desc { position: relative; z-index: 1; margin-bottom: 24px; padding: 22px; border-radius: 22px; text-align: left; font-size: 0.95rem; color: rgba(255,255,255,0.96); background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); } .contact-desc p { margin: 0 0 10px; } .contact-desc p:last-child { margin: 0; } .contact-desc .warning { color: #FFEaa7; }
+.button-area { position: relative; z-index: 1; text-align: center; }
+.contact-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--brand) !important; font-weight: 800; font-size: 1rem; box-shadow: 0 12px 30px rgba(0,0,0,0.12); transition: 0.3s; text-decoration: none !important; } a.contact-button:hover, a.contact-button:focus, .contact-button:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); text-decoration: none !important; }
 /* フッター */
 .stylish-footer { margin-top: 60px; padding: 60px 20px; text-align: center; background: #1e272e; color: #808e9b; }
 .footer-logo { margin-bottom: 15px; color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; }
