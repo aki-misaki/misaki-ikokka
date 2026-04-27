@@ -26,24 +26,32 @@ import Layout from '../layouts/Layout.astro';
         <p>当サイトは個人運営の非公式まとめサイトです。お出かけの際は<strong>必ず主催者の公式情報</strong>をご確認ください。</p>
       </div>
 
-      <section class="section-block">
-        <div class="section-header">
+      <section class="section-block intro-compact">
+        <div class="section-header compact-header">
           <span class="emoji-icon">🚶</span>
           <h2 class="section-title">三崎で楽しむイベント・観光・町歩き</h2>
         </div>
         <p class="note-text">
-          三崎は、三崎港を中心に、まぐろグルメ、港町の商店街、海南神社、チャッキラコなどの伝統文化、城ヶ島の自然散策まで楽しめるエリアです。
-          週末のおでかけや日帰り観光では、イベントに合わせて三崎下町を歩いたり、海の駅うらり周辺で買い物をしたり、城ヶ島まで足を延ばして海辺の景色を楽しむこともできます。
+          三崎港・三崎下町商店街・城ヶ島周辺のイベントや、観光・町歩きに役立つ情報をまとめています。
         </p>
-        <p class="note-text">
-          「三崎いこっか！」では、三崎イベント情報を中心に、観光、町歩き、港町散歩に役立つリンクや年間行事の目安をまとめています。
-          掲載情報は個人が収集した非公式情報のため、開催日・時間・中止情報などは必ず主催者の公式発表をご確認ください。
-        </p>
+        <details class="intro-details">
+          <summary>三崎いこっか！について詳しく見る</summary>
+          <div class="intro-details-content">
+            <p>
+              三崎は、三崎港を中心に、まぐろグルメ、港町の商店街、海南神社、チャッキラコなどの伝統文化、城ヶ島の自然散策まで楽しめるエリアです。
+              週末のおでかけや日帰り観光では、イベントに合わせて三崎下町を歩いたり、海の駅うらり周辺で買い物をしたり、城ヶ島まで足を延ばして海辺の景色を楽しむこともできます。
+            </p>
+            <p>
+              「三崎いこっか！」では、三崎イベント情報を中心に、観光、町歩き、港町散歩に役立つリンクや年間行事の目安をまとめています。
+              掲載情報は個人が収集した非公式情報のため、開催日・時間・中止情報などは必ず主催者の公式発表をご確認ください。
+            </p>
+          </div>
+        </details>
       </section>
 
-      <section class="section-block" style="background: linear-gradient(145deg, #ffffff, #fffcf9); border: 2px solid rgba(242, 122, 84, 0.3);">
+      <section class="section-block" style="background: linear-gradient(145deg, #ffffff, #f0f7f9); border: 2px solid rgba(0, 136, 169, 0.2);">
         <div class="section-header">
-          <span class="emoji-icon icon-orange">☀️</span>
+          <span class="emoji-icon icon-blue">☀️</span>
           <h2 class="section-title">本日のイベント</h2>
         </div>
         <p class="note-text">※情報の読込に数秒かかる場合があります。</p>
@@ -58,7 +66,7 @@ import Layout from '../layouts/Layout.astro';
       <section class="section-block">
         <div class="section-header">
           <span class="emoji-icon">✨</span>
-          <h2 class="section-title">直近2カ月のイベント</h2>
+          <h2 class="section-title">直近2カ月の三崎イベント</h2>
         </div>
         <p class="note-text">一覧をスクロールすると、直近2カ月分の三崎・城ヶ島周辺イベントを確認できます。</p>
         <div class="embed-box">
@@ -66,19 +74,16 @@ import Layout from '../layouts/Layout.astro';
             <span style="display:inline-block; animation: blink 1s infinite;">⏳</span> 
             Googleカレンダーから最新のイベント情報を読み込んでいます...
           </p>
-
           <div id="calendar-content" style="display: none;">
             <div class="schedule-section">
               <h3 class="sub-title" style="margin-bottom: 5px;">直近のイベント一覧</h3>
               <div id="monthly-container"></div>
             </div>
-            
             <div class="schedule-section" style="margin-top: 50px;">
               <h3 class="sub-title" style="margin-bottom: 5px;">数日間開催のイベント</h3>
               <div id="span-container"></div>
             </div>
           </div>
-          
           <div id="error-message" style="display: none; color: var(--danger); font-weight: bold; padding: 20px; background: #fff3cd; border-radius: 8px;">
             最新イベント情報を取得できませんでした。時間をおいて再読み込みするか、下の「非公式イベントカレンダー」をご確認ください。
           </div>
@@ -91,7 +96,6 @@ import Layout from '../layouts/Layout.astro';
           <h2 class="section-title">三崎市場の入札見学</h2>
         </div>
         <p class="note-text">三崎名物「冷凍マグロ」の取引風景など、市場ならではの様子を、市場2階の見学通路から見学できます。</p>
-        
         <ul class="simple-list">
           <li><strong>🕒 おすすめの時間：</strong> 午前8時〜9時頃（水曜は8時20分頃まで）</li>
           <li><strong style="color:var(--danger);">⚠️ ご注意：</strong> 休市日などスケジュールが不定のため、詳細は必ず公式サイトをご確認ください。</li>
@@ -110,8 +114,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <p class="note-text">右下の「＋」ボタンでご自身のGoogleカレンダーに同期できます。</p>
         <p class="warning" style="margin-bottom: 8px;">⚠️【未】が付いているイベントは開催未定の可能性があります。</p>
-        <div class="update-date" id="calendar-update-date">最終確認日：未取得 ※開催可否は必ず公式情報をご確認ください</div>
-        
+        <div class="update-date" id="calendar-update-date">最終確認日：取得中 ※開催可否は必ず公式情報をご確認ください</div>
         <div style="text-align: center; margin-top: 30px;">
           <iframe 
             src="https://calendar.google.com/calendar/embed?src=355a596db8ea3140cc728458ba6f3b06606a6f71330e9718ff3df82f3a72b2e0%40group.calendar.google.com&ctz=Asia%2FTokyo" 
@@ -134,7 +137,6 @@ import Layout from '../layouts/Layout.astro';
           三崎港・海南神社・城ヶ島周辺などで、毎年定期的に開催されることが多いイベントや行事の目安です。<br>
           <span class="warning">⚠️開催日や内容は年によって変わる場合があります。今後の予定については、必ず最新の公式情報をご確認ください。</span>
         </p>
-
         <details class="modern-details">
           <summary>
             <span class="archive-summary-text">月ごとの年間イベント目安を見る</span>
@@ -165,7 +167,6 @@ import Layout from '../layouts/Layout.astro';
           <h2 class="section-title">三崎のイベント主催者・観光情報 公式リンク集</h2>
         </div>
         <p class="note-text">当サイトに掲載している情報の多くは、以下の公式団体・観光協会などが発信している内容をもとにしています。最新情報や詳細については、各公式サイトもあわせてご確認ください。（掲載順不同）</p>
-
         <div class="link-grid theme-blue">
           <a href="https://www.keikyu.co.jp/visit/otoku/otoku_maguro/" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>みさきまぐろきっぷ</h3>
@@ -230,10 +231,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="emoji-icon icon-green">🌿</span>
           <h2 class="section-title">三崎の暮らし・町歩き・文化リンク集</h2>
         </div>
-        <p class="note-text">
-          「三崎ってどんな町？」を知りたい方へ。<br>港町の雰囲気、歴史、文化、暮らし、町歩きの楽しみ方がイメージしやすくなるリンク集です。（掲載順不同）
-        </p>
-
+        <p class="note-text">「三崎ってどんな町？」を知りたい方へ。<br>港町の雰囲気、歴史、文化、暮らし、町歩きの楽しみ方がイメージしやすくなるリンク集です。（掲載順不同）</p>
         <div class="link-grid theme-green">
           <a href="https://kainanjinja.jp/" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>海南神社</h3>
@@ -268,12 +266,12 @@ import Layout from '../layouts/Layout.astro';
           <a href="https://misakikan.com/" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>三崎館本店</h3>
             <span class="card-badge">宿・歴史</span>
-            <p>明治41年から続く、三崎のランドマーク的存在である老舗旅館。「菊の間」はゲームにも登場</p>
+            <p>明治41年から続く老舗旅館。「菊の間」はゲーム『トロと休日』にも登場</p>
           </a>
           <a href="https://www.playstation.com/ja-jp/games/dokodemoissyo/#games" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>トロと休日</h3>
             <span class="card-badge">エンタメ</span>
-            <p>「どこでもいっしょ」シリーズの第4弾である、PlayStation 2用ゲーム『トロと休日』は三崎が舞台。2001年11月29日発売</p>
+            <p>PS2用ゲーム『トロと休日』は三崎が舞台。2001年11月29日発売</p>
           </a>
           <a href="https://www.miuracc.org/" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>三浦市民交流センター</h3>
@@ -283,7 +281,7 @@ import Layout from '../layouts/Layout.astro';
           <a href="https://www.city.miura.kanagawa.jp/shiseijoho/seisaku_keikaku/2/index.html" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>みうら暮らし</h3>
             <span class="card-badge">移住</span>
-            <p>三浦市が公式に運営する移住・定住者向けのポータルサイト。移住セミナーや支援制度の紹介</p>
+            <p>三浦市公式の移住・定住ポータルサイト。移住セミナーや支援制度の紹介</p>
           </a>
         </div>
       </section>
@@ -294,7 +292,6 @@ import Layout from '../layouts/Layout.astro';
           <h2 class="section-title">三崎関連の通販サイト集</h2>
         </div>
         <p class="note-text">三崎の特産品等を通販で購入できるサイト一覧です。（掲載順不同）</p>
-
         <div class="link-grid theme-orange">
           <a href="https://doska.jp/" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>DOSKA</h3>
@@ -309,17 +306,17 @@ import Layout from '../layouts/Layout.astro';
           <a href="https://item.rakuten.co.jp/f142107-miura/" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>楽天ふるさと納税</h3>
             <span class="card-badge">ふるさと納税</span>
-            <p>楽天ポイントが貯まり、普段のお買い物と同じ感覚で利用可能</p>
+            <p>楽天ポイントが貯まり、普段のお買い物感覚で利用可能</p>
           </a>
           <a href="https://www.satofull.jp/city-miura-kanagawa/" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>さとふる</h3>
             <span class="card-badge">ふるさと納税</span>
-            <p>分かりやすいサイト構成で、ランキングやレビューが充実</p>
+            <p>分かりやすい構成で、ランキングやレビューが充実</p>
           </a>
           <a href="https://furunavi.jp/Municipal/Product/Search?municipalid=739" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>ふるなび</h3>
             <span class="card-badge">ふるさと納税</span>
-            <p>寄付金額に応じてAmazonギフトカードなどがもらえるキャンペーンを頻繁に実施</p>
+            <p>寄付金額に応じてAmazonギフトカード等がもらえるキャンペーンあり</p>
           </a>
         </div>
       </section>
@@ -330,8 +327,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="contact-desc">
             <p>当サイトは個人運営のため、掲載対象は三崎エリア（三崎・城ヶ島周辺）のイベントに限っています。
               また、各イベントの主催者や関係団体とは一切関係ありません。
-              掲載内容の修正・誤りのご指摘、イベント掲載のご依頼、ご質問・その他のお問い合わせは、フォームよりお送りください。</p>
-            <p class="warning" style="margin-top:10px;">※内容によっては、掲載や返信ができない場合がありますので、あらかじめご了承ください。</p>
+              掲載内容の修正・誤りのご指摘、イベント掲載のご依頼、ご質問などは、フォームよりお送りください。</p>
+            <p class="warning" style="margin-top:10px;">※内容によっては、掲載や返信ができない場合がありますのでご了承ください。</p>
           </div>
           <div class="button-area">
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScHSIxrG-yq6BRnhAzeKxcPAbior68EMJduwPEbElV0qkk1Vg/viewform" target="_blank" rel="noopener noreferrer" class="contact-button pulse-effect">
@@ -348,28 +345,18 @@ import Layout from '../layouts/Layout.astro';
           <span class="policy-toggle" aria-hidden="true"></span>
         </summary>
         <div class="policy-content">
-          <p>「三崎いこっか！— 三崎のイベント・観光情報 —」（以下、「当サイト」といいます。）は、当サイトが提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。</p>
-          
+          <p>「三崎いこっか！｜三崎・城ヶ島のイベントと観光・町歩き情報」（以下、「当サイト」といいます。）は、当サイトが提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。</p>
           <h4>1. アクセス解析ツールについて</h4>
-          <p>当サイトでは、サービスの向上およびサイトの改善のためにGoogleによるアクセス解析ツール「Googleアナリティクス」を利用しています。<br>このGoogleアナリティクスはトラフィックデータの収集のためにCookie（クッキー）を使用しています。このトラフィックデータは匿名で収集されており、個人を特定するものではありません。<br>この機能は、お使いのブラウザ設定からCookieを無効にすることで収集を拒否することが可能です。<br>Googleアナリティクスの利用規約及びプライバシーポリシーに関する詳細は、以下のサイトをご覧ください。</p>
-          <ul style="margin-bottom:15px;">
-            <li><a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener noreferrer">Google アナリティクス利用規約</a></li>
-            <li><a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer">Google ポリシーと規約</a></li>
-          </ul>
-
+          <p>当サイトではGoogleアナリティクスを利用しています。匿名で収集されており個人を特定するものではありません。Cookieを無効にすることで収集を拒否することが可能です。</p>
           <h4>2. 個人情報の取得と利用目的</h4>
-          <p>当サイトのお問い合わせフォーム等において、お名前やメールアドレス等の個人情報をご入力いただく場合がございます。<br>これらの個人情報は、お問い合わせに対する回答や必要なご連絡にのみ利用し、それ以外の目的では利用いたしません。また、法令に基づく場合を除き、ご本人の同意を得ずに第三者に提供することはありません。</p>
-
-         <h4>3. 免責事項</h4>
-          <p>当サイトからリンクやバナー等を経由して他サイトへ移動された場合、移動先で提供される情報・サービス等について、当サイトは一切の責任を負いません。<br>掲載する情報については、可能な限り正確かつ最新の内容をお伝えできるよう努めておりますが、誤情報が含まれたり、情報が古くなったりする場合があります。更新時期や情報源の性質等により、内容に誤りや変更が生じる可能性もありますので、必ず主催者等による公式発表・公式情報をご確認ください。<br>また、本サイトに掲載された情報の利用によって、利用者または第三者に発生した損害や不利益について、運営者は一切の責任を負いかねますので、あらかじめご了承ください。<br>スマートフォンでの表示についても順次改善を行っています。見づらい箇所や表示不具合がありましたら、お問い合わせフォームよりお知らせください。</p>
-
+          <p>お問い合わせフォームにおいてお名前やメールアドレス等の個人情報をご入力いただく場合がございます。これらの情報は、お問い合わせに対する回答や必要なご連絡にのみ利用し、それ以外の目的では利用いたしません。</p>
+          <h4>3. 免責事項</h4>
+          <p>当サイトからのリンク先で提供される情報について、一切の責任を負いません。掲載情報については正確性を期しておりますが、内容に誤りや変更が生じる可能性もありますので、必ず主催者等による公式情報をご確認ください。利用によって発生した不利益について、運営者は一切の責任を負いかねます。スマートフォンでの表示についても順次改善を行っています。表示不具合がありましたらフォームよりお知らせください。</p>
           <h4>4. プライバシーポリシーの変更について</h4>
-          <p>当サイトは、個人情報に関して適用される日本の法令を遵守するとともに、本ポリシーの内容を適宜見直しその改善に努めます。<br>修正された最新のプライバシーポリシーは常に本ページにて開示されます。</p>
-          
+          <p>当サイトは法令を遵守し、本ポリシーを適宜見直し改善に努めます。修正された最新のポリシーは常に本ページにて開示されます。</p>
           <p class="policy-date">制定日: 2025年8月9日<br>改定日: 2026年3月26日</p>
         </div>
       </details>
-
     </div>
   </main>
 
@@ -384,165 +371,89 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
-    // 👇 追加：XSS対策用のエスケープ関数
     const escapeHtml = (str = "") =>
-      String(str)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+      String(str).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
 
-    // 👇 追加：安全なURLチェック関数
     const safeUrl = (url = "") => {
-      try {
-        const u = new URL(url);
-        return ["http:", "https:"].includes(u.protocol) ? u.href : "";
-      } catch {
-        return "";
-      }
+      try { const u = new URL(url); return ["http:", "https:"].includes(u.protocol) ? u.href : ""; } catch { return ""; }
     };
 
-    const bgImages = [
-      '18.jpg', '7.jpg', '8.JPG', '10.JPG', '11.JPG', 
-      '12.JPG', '14.JPG', '16.jpg', '17.jpg', '5.jpg'
-    ];
-    
+    const bgImages = ['18.jpg', '7.jpg', '8.JPG', '10.JPG', '11.JPG', '12.JPG', '14.JPG', '16.jpg', '17.jpg', '5.jpg'];
     const randomImg = bgImages[Math.floor(Math.random() * bgImages.length)];
     const heroBg = document.querySelector('.hero-bg');
-    
-    if (heroBg) {
-      heroBg.style.backgroundImage = `linear-gradient(180deg, rgba(0, 50, 80, 0.2), rgba(0, 90, 120, 0.6)), url('https://cdn.jsdelivr.net/gh/aki-misaki/misaki-ikokka@main/images/${randomImg}')`;
-    }
-    
+    if (heroBg) { heroBg.style.backgroundImage = `linear-gradient(180deg, rgba(0, 50, 80, 0.2), rgba(0, 90, 120, 0.6)), url('https://cdn.jsdelivr.net/gh/aki-misaki/misaki-ikokka@main/images/${randomImg}')`; }
+
     const gasUrl = "https://script.google.com/macros/s/AKfycbyfN0Ng6HhjZ1tDPKSRNYce-3eklsHTpZwJDb4dptJlEqofg0KGntWp77rCyjDUNFu8/exec";
     
     try {
       const response = await fetch(`${gasUrl}?mode=json&view=both`);
       const data = await response.json();
-      
       if (!data.ok) throw new Error("APIエラー");
 
       const updateDateEl = document.getElementById("calendar-update-date");
       if (updateDateEl) {
-        if (data.meta && data.meta.lastUpdated) {
-          updateDateEl.innerText = `最終確認日：${escapeHtml(data.meta.lastUpdated)}`;
-        }
+        if (data.meta && data.meta.lastUpdated) { updateDateEl.innerText = `最終確認日：${escapeHtml(data.meta.lastUpdated)}`; }
+        else { updateDateEl.innerText = "最終確認日：未取得 ※開催可否は必ず公式情報をご確認ください"; }
       }
 
       const now = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
-      const tYear = now.getFullYear();
-      const tMonth = String(now.getMonth() + 1).padStart(2, '0');
-      const tDate = String(now.getDate()).padStart(2, '0');
-      const todayIsoStr = `${tYear}-${tMonth}-${tDate}`;
-      const todayZero = new Date(tYear, now.getMonth(), now.getDate()).getTime();
+      const todayIsoStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+      const todayZero = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
 
       let todayEvents = [];
 
       if (data.monthly) {
-        data.monthly.forEach(m => {
-          m.events.forEach(ev => {
-            if (ev.startIso && ev.startIso.startsWith(todayIsoStr)) {
-              todayEvents.push(ev);
-            }
-          });
-        });
+        data.monthly.forEach(m => { m.events.forEach(ev => { if (ev.startIso && ev.startIso.startsWith(todayIsoStr)) todayEvents.push(ev); }); });
       }
-
       if (data.spanEvents) {
         data.spanEvents.forEach(ev => {
-          const parseDateJP = (dateStr) => {
-            const match = dateStr.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
-            if (match) {
-              return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])).getTime();
-            }
-            return 0;
-          };
-          const sTime = parseDateJP(ev.start);
-          const eTime = parseDateJP(ev.end);
-          if (sTime > 0 && eTime > 0 && todayZero >= sTime && todayZero <= eTime) {
-            todayEvents.push(ev);
-          }
+          const parseDateJP = (s) => { const m = s.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/); return m ? new Date(Number(m[1]), Number(m[2])-1, Number(m[3])).getTime() : 0; };
+          const sT = parseDateJP(ev.start); const eT = parseDateJP(ev.end);
+          if (sT > 0 && eT > 0 && todayZero >= sT && todayZero <= eT) todayEvents.push(ev);
         });
       }
 
       let todayHtml = "";
       if (todayEvents.length === 0) {
-        todayHtml = `<p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">イベントの予定はありません</p>`;
+        /* 👇 修正：ユーザーを下へ誘導する親切なメッセージに！ */
+        todayHtml = `<p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">本日のイベント予定はありません。<br>直近の予定は下のイベント一覧をご確認ください。</p>`;
       } else {
-        todayHtml = `<div class="today-grid">`;
+        todayHtml = `<div class="card-container">`;
         todayEvents.forEach(ev => {
-          // 👇 修正：空文字チェック付きの安全なURL生成
-          const timeText = ev.time ? escapeHtml(ev.time) : "終日 / 複数日";
-          const eLoc = escapeHtml(ev.location || "場所未定");
-          const eTitle = escapeHtml(ev.title);
-          
-          const locUrl = safeUrl(ev.locationUrl);
-          const titleUrl = safeUrl(ev.url);
-
-          const locationHtml = locUrl 
-            ? `<a href="${locUrl}" target="_blank" rel="noopener noreferrer">${eLoc}</a>` 
-            : eLoc;
-          const titleHtml = titleUrl 
-            ? `<a href="${titleUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--text);">${eTitle}</a>` 
-            : eTitle;
-
+          const tTitle = escapeHtml(ev.title); const tLoc = escapeHtml(ev.location || "場所未定");
+          const tUrl = safeUrl(ev.url); const lUrl = safeUrl(ev.locationUrl);
+          const tLink = tUrl ? `<a href="${tUrl}" target="_blank" rel="noopener noreferrer">${tTitle}</a>` : tTitle;
+          const lLink = lUrl ? `<a href="${lUrl}" target="_blank" rel="noopener noreferrer">${tLoc}</a>` : tLoc;
           todayHtml += `
-            <div class="today-card">
-              <div class="today-title">${titleHtml}</div>
-              <div class="today-info">
-                <span>🕒 ${timeText}</span>
-                <span>📍 ${locationHtml}</span>
+            <div class="event-card blue-accent">
+              <div class="card-title">${tLink}</div>
+              <div class="card-details">
+                <p><span class="card-icon" aria-hidden="true">🕒</span><span>${escapeHtml(ev.time || "終日 / 複数日")}</span></p>
+                <p><span class="card-icon" aria-hidden="true">📍</span>${lLink}</p>
               </div>
-            </div>
-          `;
+            </div>`;
         });
         todayHtml += `</div>`;
       }
-      const todayContainer = document.getElementById("today-container");
-      if (todayContainer) todayContainer.innerHTML = todayHtml;
+      const todayC = document.getElementById("today-container"); if (todayC) todayC.innerHTML = todayHtml;
 
       let monthlyHtml = "";
-      if (!data.monthly || data.monthly.length === 0) {
-        monthlyHtml = '<p style="color: #8395a7;">期間内に該当する予定はありません。</p>';
-      } else {
-        monthlyHtml += `<div class="monthly-scroll-wrapper">`; 
+      if (data.monthly) {
+        monthlyHtml += `<div class="monthly-scroll-wrapper">`;
         data.monthly.forEach(monthGroup => {
-          monthlyHtml += `<h4 class="monthly-heading">${escapeHtml(monthGroup.month)}</h4>`;
-          monthlyHtml += `
-            <table class="monthly-table">
-              <thead>
-                <tr>
-                  <th>イベント名</th><th>日付</th><th>時間</th><th>場所</th><th>リンク</th>
-                </tr>
-              </thead>
-              <tbody>
-          `;
+          monthlyHtml += `<h4 class="monthly-heading">${escapeHtml(monthGroup.month)}</h4><table class="monthly-table"><thead><tr><th>イベント名</th><th>日付</th><th>時間</th><th>場所</th><th>リンク</th></tr></thead><tbody>`;
           monthGroup.events.forEach(ev => {
-            // 👇 修正：空文字チェック付きの安全なURL生成
-            const eLoc = escapeHtml(ev.location);
-            const eTitle = escapeHtml(ev.title);
-            const eText = escapeHtml(ev.text);
-            const eDate = escapeHtml(ev.date);
-            const eTime = escapeHtml(ev.time);
-
-            const locUrl = safeUrl(ev.locationUrl);
-            const linkUrl = safeUrl(ev.url);
-
-            const locationHtml = locUrl 
-              ? `<a href="${locUrl}" target="_blank" rel="noopener noreferrer">${eLoc}</a>` 
-              : eLoc;
-            const linkHtml = linkUrl 
-              ? `<a href="${linkUrl}" target="_blank" rel="noopener noreferrer">${eText}</a>` 
-              : eText;
-
+            const lUrl = safeUrl(ev.locationUrl); const aUrl = safeUrl(ev.url);
+            const lHtml = lUrl ? `<a href="${lUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.location)}</a>` : escapeHtml(ev.location);
+            const aHtml = aUrl ? `<a href="${aUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.text)}</a>` : escapeHtml(ev.text);
+            // 👇 修正：スマホ向けの data-label 属性を復活させました！
             monthlyHtml += `
               <tr>
-                <td class="event-title-cell" data-label="イベント名">${eTitle}</td>
-                <td data-label="日付">${eDate}</td>
-                <td data-label="時間">${eTime}</td>
-                <td data-label="場所">${locationHtml}</td>
-                <td data-label="リンク">${linkHtml}</td>
+                <td class="event-title-cell" data-label="イベント名">${escapeHtml(ev.title)}</td>
+                <td data-label="日付">${escapeHtml(ev.date)}</td>
+                <td data-label="時間">${escapeHtml(ev.time)}</td>
+                <td data-label="場所">${lHtml}</td>
+                <td data-label="リンク">${aHtml}</td>
               </tr>
             `;
           });
@@ -550,245 +461,153 @@ import Layout from '../layouts/Layout.astro';
         });
         monthlyHtml += `</div>`;
       }
-      const monthlyContainer = document.getElementById("monthly-container");
-      if (monthlyContainer) monthlyContainer.innerHTML = monthlyHtml;
+      const monthlyC = document.getElementById("monthly-container"); if (monthlyC) monthlyC.innerHTML = monthlyHtml;
 
-      let spanHtml = "";
-      if (!data.spanEvents || data.spanEvents.length === 0) {
-        spanHtml = '<p style="color: #8395a7;">期間内に該当する予定はありません。</p>';
-      } else {
-        spanHtml += `<div class="card-container">`;
+      let spanHtml = `<div class="card-container">`;
+      if (data.spanEvents) {
         data.spanEvents.forEach(ev => {
-          // 👇 修正：空文字チェック付きの安全なURL生成
-          const dateText = (ev.start === ev.end) ? escapeHtml(ev.start) : `${escapeHtml(ev.start)} - ${escapeHtml(ev.end)}`;
-          const eLoc = escapeHtml(ev.location);
-          const eTitle = escapeHtml(ev.title);
-          const eText = escapeHtml(ev.text);
-
-          const locUrl = safeUrl(ev.locationUrl);
-          const linkUrl = safeUrl(ev.url);
-
-          const locationHtml = locUrl 
-            ? `<a href="${locUrl}" target="_blank" rel="noopener noreferrer">${eLoc}</a>` 
-            : `<span>${eLoc}</span>`;
-          const linkHtml = linkUrl 
-            ? `<a href="${linkUrl}" target="_blank" rel="noopener noreferrer">${eText}</a>` 
-            : `<span>${eText}</span>`;
-
-          spanHtml += `
-            <div class="event-card">
-              <div class="card-title">${eTitle}</div>
-              <div class="card-details">
-                <p><span class="card-icon" aria-hidden="true">🗓️</span><span>${dateText}</span></p>
-                ${ev.location ? `<p><span class="card-icon" aria-hidden="true">📍</span>${locationHtml}</p>` : ''}
-                ${ev.text ? `<p><span class="card-icon" aria-hidden="true">🔗</span>${linkHtml}</p>` : ''}
-              </div>
-            </div>
-          `;
+          const lUrl = safeUrl(ev.locationUrl); const aUrl = safeUrl(ev.url);
+          const lHtml = lUrl ? `<a href="${lUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.location)}</a>` : escapeHtml(ev.location);
+          const aHtml = aUrl ? `<a href="${aUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.text)}</a>` : escapeHtml(ev.text);
+          spanHtml += `<div class="event-card"><div class="card-title">${escapeHtml(ev.title)}</div><div class="card-details"><p><span class="card-icon">🗓️</span><span>${escapeHtml(ev.start)} - ${escapeHtml(ev.end)}</span></p><p><span class="card-icon">📍</span>${lHtml}</p><p><span class="card-icon">🔗</span>${aHtml}</p></div></div>`;
         });
-        spanHtml += `</div>`;
       }
-      const spanContainer = document.getElementById("span-container");
-      if (spanContainer) spanContainer.innerHTML = spanHtml;
+      spanHtml += `</div>`;
+      const spanC = document.getElementById("span-container"); if (spanC) spanC.innerHTML = spanHtml;
 
-      const loadingMessage = document.getElementById("loading-message");
-      if (loadingMessage) loadingMessage.style.display = "none";
-      
-      const calendarContent = document.getElementById("calendar-content");
-      if (calendarContent) calendarContent.style.display = "block";
+      const loadingM = document.getElementById("loading-message"); if (loadingM) loadingM.style.display = "none";
+      const calC = document.getElementById("calendar-content"); if (calC) calC.style.display = "block";
 
-    } catch (error) {
-      console.error("データの取得に失敗しました:", error);
-      
-      const loadingMsg = document.getElementById("loading-message");
-      if (loadingMsg) loadingMsg.style.display = "none";
-      
-      const todayLoading = document.getElementById("today-loading");
-      if (todayLoading) todayLoading.style.display = "none";
-      
-      const errorMsg = document.getElementById("error-message");
-      if (errorMsg) errorMsg.style.display = "block";
-
-      const todayContainer = document.getElementById("today-container");
-      if (todayContainer) {
-        todayContainer.innerHTML = `
-          <p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">
-            本日のイベント情報を取得できませんでした。下のカレンダーまたは公式情報をご確認ください。
-          </p>
-        `;
-      }
+    } catch (err) {
+      console.error(err);
+      const loadingM = document.getElementById("loading-message"); if (loadingM) loadingM.style.display = "none";
+      const todayL = document.getElementById("today-loading"); if (todayL) todayL.style.display = "none";
+      const errorM = document.getElementById("error-message"); if (errorM) errorM.style.display = "block";
+      const todayC = document.getElementById("today-container"); if (todayC) todayC.innerHTML = `<p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">本日のイベント情報を取得できませんでした。下のカレンダーまたは公式情報をご確認ください。</p>`;
     }
   });
 </script>
 
 <style is:global>
 html, body { overflow-x: hidden; }
-
 :root {
-  --bg: #f4f9f9;
-  --surface: rgba(255, 255, 255, 0.84);
-  --surface-strong: rgba(255, 255, 255, 0.98);
-  --text: #2c3e50;
-  --text-soft: #576574;
-  --text-faint: #8395a7;
-  --brand: #0088A9;
-  --brand-strong: #00607A;
-  --brand-soft: #e0f4f8;
-  --blue: #0984e3;
-  --blue-soft: #e3f2fd;
-  --green: #00b894;
-  --green-soft: #e8f5e9;
-  --orange: #f27a54;
-  --orange-soft: #fdeee9;
-  --danger: #d63031;
-  --shadow-xs: 0 4px 14px rgba(0, 80, 120, 0.04);
-  --shadow-sm: 0 10px 30px rgba(0, 80, 120, 0.06);
-  --shadow-md: 0 20px 40px rgba(0, 80, 120, 0.08);
-  --radius-sm: 14px;
-  --radius-md: 20px;
-  --radius-lg: 28px;
-  --radius-xl: 36px;
-  --container: 1100px;
+  --bg: #f4f9f9; --surface-strong: rgba(255, 255, 255, 0.98); --text: #2c3e50; --text-soft: #576574;
+  --brand: #0088A9; --brand-strong: #00607A; --brand-soft: #e0f4f8; --blue: #0984e3; --blue-soft: #e3f2fd;
+  --green: #00b894; --green-soft: #e8f5e9; --orange: #f27a54; --orange-soft: #fdeee9; --danger: #d63031; 
+  --shadow-xs: 0 4px 14px rgba(0, 80, 120, 0.04); --radius-lg: 28px; --container: 1100px;
 }
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; color: var(--text); font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; letter-spacing: 0.02em; background-color: var(--bg); background-image: radial-gradient(circle at 15% 50px, rgba(0, 136, 169, 0.08), transparent 500px), radial-gradient(circle at 85% 150px, rgba(242, 122, 84, 0.05), transparent 500px); background-attachment: fixed; }
-img { max-width: 100%; display: block; }
-a { color: var(--brand); text-decoration: none; text-underline-offset: 0.18em; transition: all 0.25s ease; }
-a:hover { color: var(--brand-strong); text-decoration: underline; }
+body { margin: 0; color: var(--text); font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; background-color: var(--bg); background-image: radial-gradient(circle at 15% 50px, rgba(0, 136, 169, 0.08), transparent 500px), radial-gradient(circle at 85% 150px, rgba(242, 122, 84, 0.05), transparent 500px); background-attachment: fixed; }
+a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover { color: var(--brand-strong); text-decoration: underline; }
 .container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
-main { position: relative; }
 
 /* ヒーローエリア */
-.hero-header { position: relative; min-height: 400px; display: grid; place-items: center; overflow: hidden; margin-bottom: 40px; border-radius: 0 0 40px 40px; box-shadow: var(--shadow-sm); }
-.hero-bg { position: absolute; inset: 0; background-image: linear-gradient(180deg, rgba(0, 50, 80, 0.2), rgba(0, 90, 120, 0.6)), url('https://cdn.jsdelivr.net/gh/aki-misaki/misaki-ikokka@main/images/18.jpg'); background-size: cover; background-position: center center; transform: scale(1.02); }
-.hero-overlay { position: relative; z-index: 1; width: 100%; padding: 40px 20px 60px; display: flex; justify-content: center; align-items: center; }
-.hero-text { text-align: center; color: #fff; max-width: 850px; padding: 30px 30px; background: rgba(10, 30, 50, 0.35); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 24px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
-.hero-subtitle { margin: 0 0 12px; font-size: 0.95rem; letter-spacing: 0.25em; font-weight: 700; color: #e0f4f8; }
-
-.hero-text h1 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 5.5rem); line-height: 1.1; letter-spacing: 0.05em; text-indent: 0.05em; font-weight: 700; white-space: normal; word-break: keep-all; text-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
-
-.hero-lead { margin: 15px auto 0; font-size: 1.1rem; line-height: 1.8; font-weight: 500; color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.hero-header { position: relative; min-height: 400px; display: grid; place-items: center; overflow: hidden; margin-bottom: 40px; border-radius: 0 0 40px 40px; }
+.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.02); }
+.hero-text { text-align: center; color: #fff; max-width: 850px; padding: 30px; background: rgba(10, 30, 50, 0.35); backdrop-filter: blur(8px); border-radius: 24px; }
+.hero-text h1 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 5.5rem); letter-spacing: 0.05em; text-indent: 0.05em; font-weight: 700; }
 
 /* 注意書きバナー */
-.disclaimer-banner { display: flex; align-items: flex-start; gap: 10px; background: #e6f4ea; border: 1px solid #c3e6cb; color: #155724; padding: 12px 16px; border-radius: 12px; margin-bottom: 30px; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
-.disclaimer-banner p { margin: 0; line-height: 1.5; }
-.disclaimer-banner strong { color: var(--brand-strong); }
+.disclaimer-banner { display: flex; align-items: flex-start; gap: 10px; background: #e6f4ea; border: 1px solid #c3e6cb; color: #155724; padding: 12px 16px; border-radius: 12px; margin-bottom: 30px; font-size: 0.9rem; }
+
+/* SEOセクション（コンパクト版） */
+.intro-compact { padding: 24px 30px; margin-bottom: 35px; }
+.compact-header { margin-bottom: 16px; }
+.intro-details { margin-top: 8px; }
+.intro-details summary { cursor: pointer; color: var(--brand); font-weight: 800; font-size: 0.95rem; list-style: none; display: inline-flex; align-items: center; }
+.intro-details summary::-webkit-details-marker { display: none; }
+.intro-details summary::after { content: "＋"; margin-left: 8px; font-weight: 900; }
+.intro-details[open] summary::after { content: "−"; }
+.intro-details-content { margin-top: 14px; padding-top: 14px; border-top: 1px dashed rgba(0, 136, 169, 0.15); color: var(--text-soft); font-size: 0.95rem; }
 
 /* セクション共通 */
-.section-block { position: relative; margin-bottom: 50px; padding: 35px 40px; border-radius: 32px; background: var(--surface-strong); border: 1px solid rgba(255,255,255,0.8); box-shadow: var(--shadow-sm); }
+.section-block { margin-bottom: 50px; padding: 35px 40px; border-radius: 32px; background: var(--surface-strong); box-shadow: 0 10px 30px rgba(0, 80, 120, 0.06); }
 .section-header { display: flex; align-items: center; gap: 18px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid rgba(0, 136, 169, 0.1); position: relative; }
 .section-header::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 80px; height: 4px; background: linear-gradient(90deg, var(--brand), var(--orange)); border-radius: 4px; }
-.emoji-icon { width: 54px; height: 54px; flex: 0 0 54px; display: grid; place-items: center; border-radius: 18px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); font-size: 1.5rem; }
-.icon-blue { color: var(--blue); } .icon-green { color: var(--green); } .icon-orange { color: var(--orange); }
-.section-title { margin: 0; font-size: clamp(1.5rem, 3vw, 1.95rem); line-height: 1.3; font-weight: 900; color: var(--brand-strong); letter-spacing: 0.03em; }
-
-.sub-title { margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--brand); font-size: 1.25rem; font-weight: 900; color: var(--brand-strong); letter-spacing: 0.05em; }
+.emoji-icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 18px; background: #fff; box-shadow: var(--shadow-xs); font-size: 1.5rem; }
+.section-title { margin: 0; font-size: clamp(1.5rem, 3vw, 1.95rem); font-weight: 900; color: var(--brand-strong); }
+.sub-title { margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--brand); font-size: 1.25rem; font-weight: 900; color: var(--brand-strong); }
 .note-text { margin: 0 0 20px; color: var(--text-soft); font-size: 0.95rem; }
 .warning { color: var(--danger); font-weight: 700; }
-.update-date { display: inline-flex; align-items: center; padding: 4px 14px; margin-bottom: 20px; background: #f4f7f9; color: var(--text-soft); border: 1px solid rgba(44, 62, 80, 0.08); border-radius: 50px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; } .update-date::before { content: "🕒"; margin-right: 6px; font-size: 0.9rem; }
+.update-date { display: inline-flex; align-items: center; padding: 4px 14px; margin-bottom: 20px; background: #f4f7f9; border-radius: 50px; font-size: 0.85rem; font-weight: 700; }
 
-/* 追加：市場セクションのシンプルなリスト化とボタン */
-.simple-list { margin: 0; padding-left: 1.5em; color: var(--text); font-size: 0.95rem; }
-.simple-list li { margin-bottom: 10px; }
-.compact-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; color: var(--blue) !important; background: #fff; border: 1px solid var(--blue-soft); padding: 10px 22px; border-radius: 50px; box-shadow: 0 4px 10px rgba(9, 132, 227, 0.08); text-decoration: none !important; transition: all 0.25s ease; }
-.compact-btn:hover { background: var(--blue-soft); border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(9, 132, 227, 0.15); }
+/* 市場見学用 */
+.simple-list { padding-left: 1.5em; font-size: 0.95rem; }
+.compact-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; color: var(--blue) !important; background: #fff; border: 1px solid var(--blue-soft); padding: 10px 22px; border-radius: 50px; box-shadow: 0 4px 10px rgba(9, 132, 227, 0.08); }
 
-/* 埋め込みエリア */
-.embed-box { padding: 30px; border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.08); box-shadow: var(--shadow-xs); }
+/* カードデザイン（本日のイベント & 数日間開催） */
+.card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; width: 100%; }
+.event-card { border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; }
+.event-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,80,120,0.08); }
+.event-card.blue-accent { border-left: 5px solid var(--blue); }
+.card-title { font-weight: 900; font-size: 1.1rem; background: #f4f7f9; padding: 15px 20px; border-bottom: 1px dashed #cbd5e1; }
+.card-details { padding: 15px 20px 20px; }
+.card-details p { margin: 8px 0; color: var(--text-soft); display: flex; align-items: flex-start; font-size: 0.95rem; }
+.card-icon { margin-right: 8px; }
 
-/* アコーディオン */
-.modern-details { border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); }
-.modern-details summary { display: flex; align-items: center; justify-content: space-between; list-style: none; cursor: pointer; font-size: 1.05rem; font-weight: 800; color: var(--brand); padding: 15px 20px; }
-.modern-details summary::-webkit-details-marker { display: none; }
-.archive-toggle, .policy-toggle { position: relative; flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-soft); border: 1px solid rgba(0, 136, 169, 0.1); transition: 0.3s; } .archive-toggle::before, .archive-toggle::after, .policy-toggle::before, .policy-toggle::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--brand); border-radius: 2px; transform: translate(-50%, -50%); } .archive-toggle::before, .policy-toggle::before { width: 12px; height: 2px; } .archive-toggle::after, .policy-toggle::after { width: 2px; height: 12px; transition: transform 0.3s; } .modern-details[open] .archive-toggle::after, .modern-details[open] .policy-toggle::after { transform: translate(-50%, -50%) rotate(90deg) scaleY(0); }
-.archive-content { padding: 0 20px 20px; border-top: 1px dashed rgba(0, 136, 169, 0.1); margin-top: 5px; padding-top: 20px; }
+/* 埋め込み・テーブル */
+.embed-box { padding: 30px; border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.08); }
+.monthly-scroll-wrapper { max-height: 600px; overflow-y: auto; padding-right: 8px; }
+.monthly-heading { margin-top: 25px; margin-bottom: 10px; color: var(--brand-strong); font-weight: 800; }
+.monthly-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.monthly-table th, .monthly-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e0e6ed; word-wrap: break-word; font-size: 0.95rem; }
+.monthly-table th { background: #f4f7f9; font-weight: bold; }
+.event-title-cell { font-weight: 800; }
+
+/* アコーディオン切り替えアイコン（アーカイブ ＆ プライバシーポリシー共通） */
+.modern-details summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 1.05rem; font-weight: 800; color: var(--brand); padding: 15px 20px; list-style: none; }
+.archive-toggle, .policy-toggle { position: relative; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-soft); flex: 0 0 28px; }
+.archive-toggle::before, .archive-toggle::after, .policy-toggle::before, .policy-toggle::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--brand); transform: translate(-50%, -50%); }
+.archive-toggle::before, .policy-toggle::before { width: 12px; height: 2px; } 
+.archive-toggle::after, .policy-toggle::after { width: 2px; height: 12px; transition: 0.3s; }
+.modern-details[open] .archive-toggle::after, .modern-details[open] .policy-toggle::after { transform: translate(-50%, -50%) rotate(90deg) scaleY(0); }
+/* アーカイブ用グリッド */
 .archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
-.month-card { padding: 20px; border-radius: 16px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); position: relative; overflow: hidden; } .month-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--brand); }
-.month-header { margin-bottom: 12px; font-size: 1.15rem; font-weight: 900; color: var(--brand); } .month-card ul { margin: 0; padding: 0; list-style: none; font-size: 0.9rem; } .month-card li { position: relative; margin-bottom: 8px; padding-left: 16px; } .month-card li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+.month-card { padding: 20px; border-radius: 16px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); position: relative; overflow: hidden; }
+.month-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--brand); }
+.month-header { margin-bottom: 12px; font-weight: 900; color: var(--brand); }
+.month-card ul { list-style: none; padding: 0; font-size: 0.9rem; }
+.month-card li { position: relative; padding-left: 16px; margin-bottom: 8px; }
+.month-card li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+/* プライバシーポリシー用コンテンツ */
+.policy-content { padding: 20px; background: #fff; border-top: 1px dashed rgba(0, 136, 169, 0.12); border-radius: 0 0 16px 16px; }
 
 /* リンクカード集 */
 .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-.stylish-card { display: flex; flex-direction: column; padding: 28px 24px; border-radius: 20px; background: #ffffff; border: 2px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); } 
+.stylish-card { padding: 28px 24px; border-radius: 20px; border: 2px solid #cbd5e1; background: #fff; display: flex; flex-direction: column; transition: all 0.3s; }
 .stylish-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-.stylish-card h3 { margin: 0 0 8px; font-size: 1.2rem; font-weight: 900; color: var(--text); transition: 0.2s; } 
-.card-badge { align-self: flex-start; padding: 6px 14px; margin-bottom: 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; } 
-.stylish-card p { margin: 0; color: var(--text-soft); font-size: 0.95rem; line-height: 1.6; }
-.theme-blue .card-badge { background: var(--blue-soft); color: var(--blue); } .theme-blue .stylish-card:hover { border-color: var(--blue); } .theme-blue .stylish-card:hover h3 { color: var(--blue); } 
-.theme-green .card-badge { background: var(--green-soft); color: var(--green); } .theme-green .stylish-card:hover { border-color: var(--green); } .theme-green .stylish-card:hover h3 { color: var(--green); } 
-.theme-orange .card-badge { background: var(--orange-soft); color: var(--orange); } .theme-orange .stylish-card:hover { border-color: var(--orange); } .theme-orange .stylish-card:hover h3 { color: var(--orange); }
+.card-badge { align-self: flex-start; padding: 6px 14px; margin-bottom: 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; background: var(--blue-soft); color: var(--blue); }
+/* 👇 修正：テーマカラー（ホバー色・バッジ色）の復活 */
+.theme-blue .card-badge { background: var(--blue-soft); color: var(--blue); }
+.theme-blue .stylish-card:hover { border-color: var(--blue); }
+.theme-green .card-badge { background: var(--green-soft); color: var(--green); }
+.theme-green .stylish-card:hover { border-color: var(--green); }
+.theme-orange .card-badge { background: var(--orange-soft); color: var(--orange); }
+.theme-orange .stylish-card:hover { border-color: var(--orange); }
 
 /* お問い合わせ */
-.gradient-bg { position: relative; overflow: hidden; padding: clamp(28px, 4vw, 52px); border-radius: 30px; background: radial-gradient(circle at top right, rgba(255,255,255,0.20), transparent 24%), linear-gradient(135deg, #135b85 0%, #1e7cad 52%, #50a8c5 100%); color: #fff; text-align: center; box-shadow: 0 24px 60px rgba(20, 87, 128, 0.22); }
-.gradient-bg::before, .gradient-bg::after { content: ""; position: absolute; border-radius: 999px; background: rgba(255,255,255,0.08); pointer-events: none; } .gradient-bg::before { width: 220px; height: 220px; right: -50px; top: -80px; } .gradient-bg::after { width: 180px; height: 180px; left: -40px; bottom: -80px; }
-.contact-title { position: relative; z-index: 1; margin: 0 0 22px; font-size: clamp(1.5rem, 3vw, 2.05rem); line-height: 1.35; font-weight: 900; text-align: center; }
-.contact-desc { position: relative; z-index: 1; margin-bottom: 24px; padding: 22px; border-radius: 22px; text-align: left; font-size: 0.95rem; color: rgba(255,255,255,0.96); background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); } .contact-desc p { margin: 0 0 10px; } .contact-desc p:last-child { margin: 0; } .contact-desc .warning { color: #FFEaa7; }
-.button-area { position: relative; z-index: 1; text-align: center; }
-.contact-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--brand) !important; font-weight: 800; font-size: 1rem; box-shadow: 0 12px 30px rgba(0,0,0,0.12); transition: 0.3s; text-decoration: none !important; } a.contact-button:hover, a.contact-button:focus, .contact-button:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); text-decoration: none !important; }
-
-/* プライバシーポリシー */
-.policy-accordion { padding: 0; border: none; background: transparent; box-shadow: none; margin-bottom: 50px; }
-.policy-accordion summary { padding: 15px 20px; background: #fff; border-radius: 16px; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); } .policy-accordion[open] summary { border-radius: 16px 16px 0 0; border-bottom: 1px solid rgba(0, 136, 169, 0.08); }
-.policy-content { padding: 25px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); border-top: none; border-radius: 0 0 16px 16px; }
-.policy-content h4 { color: var(--text); font-size: 1.05rem; } .policy-content ul { padding-left: 1.2em; } .policy-content li { margin-bottom: 6px; }
-.policy-date { margin-top: 18px; text-align: right; color: var(--text); font-weight: 700; }
+.gradient-bg { padding: 40px; border-radius: 30px; background: linear-gradient(135deg, #135b85 0%, #1e7cad 52%, #50a8c5 100%); color: #fff; text-align: center; }
+.contact-desc { padding: 22px; border-radius: 22px; background: rgba(255,255,255,0.12); margin-bottom: 24px; text-align: left; }
+.contact-button { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--brand) !important; font-weight: 800; }
 
 /* フッター */
 .stylish-footer { margin-top: 60px; padding: 60px 20px; text-align: center; background: #1e272e; color: #808e9b; }
-.footer-logo { margin-bottom: 15px; color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; } .stylish-footer p { margin: 5px 0; }
-
-/* --- JSで後から追加されるカレンダー専用のスタイル --- */
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-.today-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-.today-card { background: #fff; border-left: 5px solid var(--orange); border-radius: 8px; padding: 18px 20px; box-shadow: var(--shadow-xs); }
-.today-title { font-weight: 800; font-size: 1.15rem; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
-.today-info { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.95rem; color: var(--text-soft); }
-.today-info a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
-.schedule-section { margin-bottom: 20px; width: 100%; box-sizing: border-box; }
-.monthly-scroll-wrapper { max-height: 600px; overflow-y: auto; overflow-x: hidden; padding-right: 8px; }
-.monthly-scroll-wrapper::-webkit-scrollbar { width: 6px; } .monthly-scroll-wrapper::-webkit-scrollbar-track { background: transparent; } .monthly-scroll-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-.monthly-heading { margin-top: 25px; margin-bottom: 10px; font-size: 1.15em; color: var(--brand-strong); font-weight: 800; } .monthly-heading:first-child { margin-top: 5px; }
-.monthly-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-bottom: 10px; }
-.monthly-table th, .monthly-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e0e6ed; word-wrap: break-word; vertical-align: top; font-size: 0.95rem; color: var(--text); }
-.monthly-table th { font-weight: bold; background: #f4f7f9; border-bottom: 2px solid #e0e6ed; }
-.monthly-table th:nth-child(1), .monthly-table td:nth-child(1) { width: 28%; } .monthly-table th:nth-child(2), .monthly-table td:nth-child(2) { width: 12%; } .monthly-table th:nth-child(3), .monthly-table td:nth-child(3) { width: 14%; } .monthly-table th:nth-child(4), .monthly-table td:nth-child(4) { width: 26%; } .monthly-table th:nth-child(5), .monthly-table td:nth-child(5) { width: 20%; }
-.monthly-table td.event-title-cell { font-weight: 800; color: var(--text); font-size: 1.05rem; }
-.monthly-table td a, .card-details a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; transition: 0.2s; font-weight: 700; display: inline-block; word-break: break-all; } 
-.monthly-table td a:hover, .card-details a:hover { text-decoration: none; background: var(--blue-soft); border-radius: 4px; padding: 2px 4px; margin: -2px -4px; }
-.card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; padding-top: 10px; width: 100%; }
-.event-card { border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 4px 12px rgba(0,80,120,0.04); display: flex; flex-direction: column; transition: transform 0.2s; overflow: hidden; padding: 0; }
-.event-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,80,120,0.08); }
-.card-title { font-weight: 900; font-size: 1.1rem; margin: 0; color: var(--text); line-height: 1.4; background: #f4f7f9; padding: 15px 20px; border-bottom: 1px dashed #cbd5e1; }
-.card-details { padding: 15px 20px 20px; }
-.card-details p { margin: 8px 0; color: var(--text-soft); display: flex; align-items: flex-start; font-size: 0.95rem; line-height: 1.5; }
-.card-icon { margin-right: 6px; font-size: 1.1em; }
+.footer-logo { margin-bottom: 15px; color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; }
 
 /* 📱 スマホ向けレスポンシブ */
 @media screen and (max-width:768px) {
   .container { width: calc(100% - 30px); }
-  .hero-header { min-height: 280px; border-radius: 0 0 30px 30px; }
-  .hero-text { padding: 25px 20px; margin: 0 10px; }
-  .hero-lead { font-size: 0.95rem; margin: 10px auto 0; }
-  .disclaimer-banner { padding: 10px 14px; font-size: 0.8rem; margin-bottom: 25px; margin-top: -15px; }
-  .section-block { padding: 25px 20px; border-radius: 24px; margin-bottom: 30px; }
-  .section-header { gap: 12px; align-items: flex-start; padding-bottom: 12px; }
-  .emoji-icon { width: 46px; height: 46px; flex-basis: 46px; font-size: 1.2rem; }
-  .section-title { font-size: 1.3rem; }
-  .embed-box { padding: 18px; }
-  .stylish-card { padding: 22px 18px; }
-  .gradient-bg { padding: 30px 20px; }
-  .contact-desc { padding: 20px; font-size: 0.9rem; }
-  .contact-button { width: 100%; padding: 15px; }
-  
-  .today-info { flex-direction: column; gap: 6px; }
+  .hero-header { min-height: 280px; }
+  .section-block { padding: 25px 20px; border-radius: 24px; }
+  .intro-compact { padding: 20px 18px; margin-bottom: 25px; }
   .monthly-table thead { display: none; }
-  .monthly-table, .monthly-table tbody, .monthly-table tr { display: block; width: 100%; }
-  .monthly-table tr { margin-bottom: 12px; border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; box-shadow: 0 2px 8px rgba(0,80,120,0.03); overflow: hidden; }
-  .monthly-table td:nth-child(n) { display: block; width: 100% !important; box-sizing: border-box; text-align: left; padding-left: 65px; position: relative; border-bottom: 1px solid #f4f7f9; padding-top: 7px; padding-bottom: 7px; font-size: 0.95rem; }
-  .monthly-table td:last-child { border-bottom: none; }
-  .monthly-table td::before { content: attr(data-label); position: absolute; left: 15px; width: 45px; font-weight: 800; color: var(--text-soft); font-size: 0.85rem; }
-  .monthly-table td.event-title-cell { padding-left: 15px !important; padding-top: 10px !important; padding-bottom: 8px !important; background: #f4f7f9; color: var(--text); font-size: 1.1rem; font-weight: 900; border-bottom: 1px dashed #cbd5e1; }
+  .monthly-table tr { display: block; margin-bottom: 12px; border: 1px solid #e0e6ed; border-radius: 12px; }
+  .monthly-table td { display: block; padding-left: 75px; position: relative; border-bottom: 1px solid #f4f7f9; }
+  .monthly-table td::before { content: attr(data-label); position: absolute; left: 15px; font-weight: 800; color: var(--text-soft); }
+  .monthly-table td.event-title-cell { padding-left: 15px; background: #f4f7f9; font-weight: 900; }
   .monthly-table td.event-title-cell::before { display: none; }
+  .contact-button { width: 100%; }
 }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 </style>
