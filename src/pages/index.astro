@@ -2,8 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="三崎いこっか！— 三崎のイベント・観光情報 —" description="神奈川県三浦半島の【三崎エリア（三崎港・周辺商店街・城ヶ島）】で開催されるイベントや観光情報を収集・整理した、非公式の情報ポータルサイトです。週末のおでかけや港町さんぽに。">
-<main>
+<Layout 
+  title="三崎いこっか！｜三崎・城ヶ島のイベントと観光・町歩き情報" 
+  description="三崎港・三崎下町商店街・城ヶ島周辺のイベント、観光、町歩き、港町散歩に役立つ情報を集めた非公式ポータルサイトです。週末のおでかけ前に、開催情報や公式リンクを確認できます。">
+  <main>
     <header class="hero-header">
       <div class="hero-bg"></div>
       <div class="hero-overlay">
@@ -24,6 +26,21 @@ import Layout from '../layouts/Layout.astro';
         <p>当サイトは個人運営の非公式まとめサイトです。お出かけの際は<strong>必ず主催者の公式情報</strong>をご確認ください。</p>
       </div>
 
+      <section class="section-block">
+        <div class="section-header">
+          <span class="emoji-icon">🚶</span>
+          <h2 class="section-title">三崎で楽しむイベント・観光・町歩き</h2>
+        </div>
+        <p class="note-text">
+          三崎は、三崎港を中心に、まぐろグルメ、港町の商店街、海南神社、チャッキラコなどの伝統文化、城ヶ島の自然散策まで楽しめるエリアです。
+          週末のおでかけや日帰り観光では、イベントに合わせて三崎下町を歩いたり、海の駅うらり周辺で買い物をしたり、城ヶ島まで足を延ばして海辺の景色を楽しむこともできます。
+        </p>
+        <p class="note-text">
+          「三崎いこっか！」では、三崎イベント情報を中心に、観光、町歩き、港町散歩に役立つリンクや年間行事の目安をまとめています。
+          掲載情報は個人が収集した非公式情報のため、開催日・時間・中止情報などは必ず主催者の公式発表をご確認ください。
+        </p>
+      </section>
+
       <section class="section-block" style="background: linear-gradient(145deg, #ffffff, #fffcf9); border: 2px solid rgba(242, 122, 84, 0.3);">
         <div class="section-header">
           <span class="emoji-icon icon-orange">☀️</span>
@@ -43,7 +60,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="emoji-icon">✨</span>
           <h2 class="section-title">直近2カ月のイベント</h2>
         </div>
-        <p class="note-text">フレーム内をスクロールすると、2カ月分のスケジュールを閲覧できます。</p>
+        <p class="note-text">一覧をスクロールすると、直近2カ月分の三崎・城ヶ島周辺イベントを確認できます。</p>
         <div class="embed-box">
           <p class="note-text" id="loading-message">
             <span style="display:inline-block; animation: blink 1s infinite;">⏳</span> 
@@ -62,8 +79,8 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
           
-          <div id="error-message" style="display: none; color: var(--danger); font-weight: bold; padding: 20px; background: #ffeaa7; border-radius: 8px;">
-            情報の読み込みに失敗しました。時間をおいて再度お試しください。
+          <div id="error-message" style="display: none; color: var(--danger); font-weight: bold; padding: 20px; background: #fff3cd; border-radius: 8px;">
+            最新イベント情報を取得できませんでした。時間をおいて再読み込みするか、下の「非公式イベントカレンダー」をご確認ください。
           </div>
         </div>
       </section>
@@ -73,13 +90,13 @@ import Layout from '../layouts/Layout.astro';
           <span class="emoji-icon icon-blue">🐟</span>
           <h2 class="section-title">三崎市場の入札見学</h2>
         </div>
-        <p class="note-text">三崎名物「冷凍マグロ」の入札風景は、市場2階の見学通路から一般の方も見学可能です！</p>
+        <p class="note-text">三崎名物「冷凍マグロ」の取引風景など、市場ならではの様子を、市場2階の見学通路から見学できます。</p>
         
         <ul class="simple-list">
           <li><strong>🕒 おすすめの時間：</strong> 午前8時〜9時頃（水曜は8時20分頃まで）</li>
           <li><strong style="color:var(--danger);">⚠️ ご注意：</strong> 休市日などスケジュールが不定のため、詳細は必ず公式サイトをご確認ください。</li>
         </ul>
-      <div style="margin-top: 20px;">
+        <div style="margin-top: 20px;">
           <a href="https://www.city.miura.kanagawa.jp/soshiki/umigyosuisanka/umigyosuisanka_shijo/192.html" target="_blank" rel="noopener noreferrer" class="compact-btn">
             三浦市三崎水産物地方卸売市場 公式サイト <span aria-hidden="true">→</span>
           </a>
@@ -93,7 +110,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <p class="note-text">右下の「＋」ボタンでご自身のGoogleカレンダーに同期できます。</p>
         <p class="warning" style="margin-bottom: 8px;">⚠️【未】が付いているイベントは開催未定の可能性があります。</p>
-        <div class="update-date" id="calendar-update-date">最終更新日：確認中...</div>
+        <div class="update-date" id="calendar-update-date">最終確認日：未取得 ※開催可否は必ず公式情報をご確認ください</div>
         
         <div style="text-align: center; margin-top: 30px;">
           <iframe 
@@ -111,13 +128,16 @@ import Layout from '../layouts/Layout.astro';
       <section class="section-block">
         <div class="section-header">
           <span class="emoji-icon">📋</span>
-          <h2 class="section-title">過去のイベント（アーカイブ）</h2>
+          <h2 class="section-title">三崎の年間イベント目安</h2>
         </div>
-        <p class="note-text">毎年定期的に開催されているイベントの情報です。<br><span class="warning">⚠️開催時期は毎年同じとは限りません。今後の予定については、必ず最新情報をご確認ください。</span></p>
+        <p class="note-text">
+          三崎港・海南神社・城ヶ島周辺などで、毎年定期的に開催されることが多いイベントや行事の目安です。<br>
+          <span class="warning">⚠️開催日や内容は年によって変わる場合があります。今後の予定については、必ず最新の公式情報をご確認ください。</span>
+        </p>
 
         <details class="modern-details">
           <summary>
-            <span class="archive-summary-text">年間イベント アーカイブを見る</span>
+            <span class="archive-summary-text">月ごとの年間イベント目安を見る</span>
             <span class="archive-toggle" aria-hidden="true"></span>
           </summary>
           <div class="archive-content">
@@ -208,9 +228,11 @@ import Layout from '../layouts/Layout.astro';
       <section class="section-block">
         <div class="section-header">
           <span class="emoji-icon icon-green">🌿</span>
-          <h2 class="section-title">三崎の暮らしや文化 情報サイトリンク集</h2>
+          <h2 class="section-title">三崎の暮らし・町歩き・文化リンク集</h2>
         </div>
-        <p class="note-text">「三崎ってどんな町？」<br>町の雰囲気や魅力がイメージしやすくなるサイトのリンク集です。（掲載順不同）</p>
+        <p class="note-text">
+          「三崎ってどんな町？」を知りたい方へ。<br>港町の雰囲気、歴史、文化、暮らし、町歩きの楽しみ方がイメージしやすくなるリンク集です。（掲載順不同）
+        </p>
 
         <div class="link-grid theme-green">
           <a href="https://kainanjinja.jp/" target="_blank" rel="noopener noreferrer" class="stylish-card">
@@ -256,7 +278,7 @@ import Layout from '../layouts/Layout.astro';
           <a href="https://www.miuracc.org/" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>三浦市民交流センター</h3>
             <span class="card-badge">交流</span>
-            <p>フリースペースと、予約制の貸やイベント企画、作品展示など</p>
+            <p>フリースペース、予約制の貸室、イベント企画、作品展示など</p>
           </a>
           <a href="https://www.city.miura.kanagawa.jp/shiseijoho/seisaku_keikaku/2/index.html" target="_blank" rel="noopener noreferrer" class="stylish-card">
             <h3>みうら暮らし</h3>
@@ -362,6 +384,25 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
+    // 👇 追加：XSS対策用のエスケープ関数
+    const escapeHtml = (str = "") =>
+      String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    // 👇 追加：安全なURLチェック関数
+    const safeUrl = (url = "") => {
+      try {
+        const u = new URL(url);
+        return ["http:", "https:"].includes(u.protocol) ? u.href : "";
+      } catch {
+        return "";
+      }
+    };
+
     const bgImages = [
       '18.jpg', '7.jpg', '8.JPG', '10.JPG', '11.JPG', 
       '12.JPG', '14.JPG', '16.jpg', '17.jpg', '5.jpg'
@@ -382,15 +423,18 @@ import Layout from '../layouts/Layout.astro';
       
       if (!data.ok) throw new Error("APIエラー");
 
-      if (data.meta && data.meta.lastUpdated) {
-        document.getElementById("calendar-update-date").innerText = `最終更新日：${data.meta.lastUpdated}`;
+      const updateDateEl = document.getElementById("calendar-update-date");
+      if (updateDateEl) {
+        if (data.meta && data.meta.lastUpdated) {
+          updateDateEl.innerText = `最終確認日：${escapeHtml(data.meta.lastUpdated)}`;
+        }
       }
 
       const now = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
       const tYear = now.getFullYear();
       const tMonth = String(now.getMonth() + 1).padStart(2, '0');
       const tDate = String(now.getDate()).padStart(2, '0');
-      const todayStr = `${tYear}/${tMonth}/${tDate}`;
+      const todayIsoStr = `${tYear}-${tMonth}-${tDate}`;
       const todayZero = new Date(tYear, now.getMonth(), now.getDate()).getTime();
 
       let todayEvents = [];
@@ -398,7 +442,7 @@ import Layout from '../layouts/Layout.astro';
       if (data.monthly) {
         data.monthly.forEach(m => {
           m.events.forEach(ev => {
-            if (ev.start === todayStr) {
+            if (ev.startIso && ev.startIso.startsWith(todayIsoStr)) {
               todayEvents.push(ev);
             }
           });
@@ -407,9 +451,16 @@ import Layout from '../layouts/Layout.astro';
 
       if (data.spanEvents) {
         data.spanEvents.forEach(ev => {
-          const sTime = new Date(ev.start).getTime();
-          const eTime = new Date(ev.end).getTime();
-          if (todayZero >= sTime && todayZero <= eTime) {
+          const parseDateJP = (dateStr) => {
+            const match = dateStr.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+            if (match) {
+              return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])).getTime();
+            }
+            return 0;
+          };
+          const sTime = parseDateJP(ev.start);
+          const eTime = parseDateJP(ev.end);
+          if (sTime > 0 && eTime > 0 && todayZero >= sTime && todayZero <= eTime) {
             todayEvents.push(ev);
           }
         });
@@ -421,13 +472,20 @@ import Layout from '../layouts/Layout.astro';
       } else {
         todayHtml = `<div class="today-grid">`;
         todayEvents.forEach(ev => {
-          const timeText = ev.time ? ev.time : "終日 / 複数日";
-          const locationHtml = ev.locationUrl 
-            ? `<a href="${ev.locationUrl}" target="_blank" rel="noopener noreferrer">${ev.location}</a>` 
-            : (ev.location || "場所未定");
-          const titleHtml = ev.url 
-            ? `<a href="${ev.url}" target="_blank" rel="noopener noreferrer" style="color:var(--text);">${ev.title}</a>` 
-            : ev.title;
+          // 👇 修正：空文字チェック付きの安全なURL生成
+          const timeText = ev.time ? escapeHtml(ev.time) : "終日 / 複数日";
+          const eLoc = escapeHtml(ev.location || "場所未定");
+          const eTitle = escapeHtml(ev.title);
+          
+          const locUrl = safeUrl(ev.locationUrl);
+          const titleUrl = safeUrl(ev.url);
+
+          const locationHtml = locUrl 
+            ? `<a href="${locUrl}" target="_blank" rel="noopener noreferrer">${eLoc}</a>` 
+            : eLoc;
+          const titleHtml = titleUrl 
+            ? `<a href="${titleUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--text);">${eTitle}</a>` 
+            : eTitle;
 
           todayHtml += `
             <div class="today-card">
@@ -441,7 +499,8 @@ import Layout from '../layouts/Layout.astro';
         });
         todayHtml += `</div>`;
       }
-      document.getElementById("today-container").innerHTML = todayHtml;
+      const todayContainer = document.getElementById("today-container");
+      if (todayContainer) todayContainer.innerHTML = todayHtml;
 
       let monthlyHtml = "";
       if (!data.monthly || data.monthly.length === 0) {
@@ -449,7 +508,7 @@ import Layout from '../layouts/Layout.astro';
       } else {
         monthlyHtml += `<div class="monthly-scroll-wrapper">`; 
         data.monthly.forEach(monthGroup => {
-          monthlyHtml += `<h4 class="monthly-heading">${monthGroup.month}</h4>`;
+          monthlyHtml += `<h4 class="monthly-heading">${escapeHtml(monthGroup.month)}</h4>`;
           monthlyHtml += `
             <table class="monthly-table">
               <thead>
@@ -460,18 +519,28 @@ import Layout from '../layouts/Layout.astro';
               <tbody>
           `;
           monthGroup.events.forEach(ev => {
-            const locationHtml = ev.locationUrl 
-              ? `<a href="${ev.locationUrl}" target="_blank" rel="noopener noreferrer">${ev.location}</a>` 
-              : ev.location;
-            const linkHtml = ev.url 
-              ? `<a href="${ev.url}" target="_blank" rel="noopener noreferrer">${ev.text}</a>` 
-              : ev.text;
+            // 👇 修正：空文字チェック付きの安全なURL生成
+            const eLoc = escapeHtml(ev.location);
+            const eTitle = escapeHtml(ev.title);
+            const eText = escapeHtml(ev.text);
+            const eDate = escapeHtml(ev.date);
+            const eTime = escapeHtml(ev.time);
+
+            const locUrl = safeUrl(ev.locationUrl);
+            const linkUrl = safeUrl(ev.url);
+
+            const locationHtml = locUrl 
+              ? `<a href="${locUrl}" target="_blank" rel="noopener noreferrer">${eLoc}</a>` 
+              : eLoc;
+            const linkHtml = linkUrl 
+              ? `<a href="${linkUrl}" target="_blank" rel="noopener noreferrer">${eText}</a>` 
+              : eText;
 
             monthlyHtml += `
               <tr>
-                <td class="event-title-cell" data-label="イベント名">${ev.title}</td>
-                <td data-label="日付">${ev.date}</td>
-                <td data-label="時間">${ev.time}</td>
+                <td class="event-title-cell" data-label="イベント名">${eTitle}</td>
+                <td data-label="日付">${eDate}</td>
+                <td data-label="時間">${eTime}</td>
                 <td data-label="場所">${locationHtml}</td>
                 <td data-label="リンク">${linkHtml}</td>
               </tr>
@@ -481,7 +550,8 @@ import Layout from '../layouts/Layout.astro';
         });
         monthlyHtml += `</div>`;
       }
-      document.getElementById("monthly-container").innerHTML = monthlyHtml;
+      const monthlyContainer = document.getElementById("monthly-container");
+      if (monthlyContainer) monthlyContainer.innerHTML = monthlyHtml;
 
       let spanHtml = "";
       if (!data.spanEvents || data.spanEvents.length === 0) {
@@ -489,17 +559,25 @@ import Layout from '../layouts/Layout.astro';
       } else {
         spanHtml += `<div class="card-container">`;
         data.spanEvents.forEach(ev => {
-          const dateText = (ev.start === ev.end) ? ev.start : `${ev.start} - ${ev.end}`;
-          const locationHtml = ev.locationUrl 
-            ? `<a href="${ev.locationUrl}" target="_blank" rel="noopener noreferrer">${ev.location}</a>` 
-            : `<span>${ev.location}</span>`;
-          const linkHtml = ev.url 
-            ? `<a href="${ev.url}" target="_blank" rel="noopener noreferrer">${ev.text}</a>` 
-            : `<span>${ev.text}</span>`;
+          // 👇 修正：空文字チェック付きの安全なURL生成
+          const dateText = (ev.start === ev.end) ? escapeHtml(ev.start) : `${escapeHtml(ev.start)} - ${escapeHtml(ev.end)}`;
+          const eLoc = escapeHtml(ev.location);
+          const eTitle = escapeHtml(ev.title);
+          const eText = escapeHtml(ev.text);
+
+          const locUrl = safeUrl(ev.locationUrl);
+          const linkUrl = safeUrl(ev.url);
+
+          const locationHtml = locUrl 
+            ? `<a href="${locUrl}" target="_blank" rel="noopener noreferrer">${eLoc}</a>` 
+            : `<span>${eLoc}</span>`;
+          const linkHtml = linkUrl 
+            ? `<a href="${linkUrl}" target="_blank" rel="noopener noreferrer">${eText}</a>` 
+            : `<span>${eText}</span>`;
 
           spanHtml += `
             <div class="event-card">
-              <div class="card-title">${ev.title}</div>
+              <div class="card-title">${eTitle}</div>
               <div class="card-details">
                 <p><span class="card-icon" aria-hidden="true">🗓️</span><span>${dateText}</span></p>
                 ${ev.location ? `<p><span class="card-icon" aria-hidden="true">📍</span>${locationHtml}</p>` : ''}
@@ -510,16 +588,35 @@ import Layout from '../layouts/Layout.astro';
         });
         spanHtml += `</div>`;
       }
-      document.getElementById("span-container").innerHTML = spanHtml;
+      const spanContainer = document.getElementById("span-container");
+      if (spanContainer) spanContainer.innerHTML = spanHtml;
 
-      document.getElementById("loading-message").style.display = "none";
-      document.getElementById("calendar-content").style.display = "block";
+      const loadingMessage = document.getElementById("loading-message");
+      if (loadingMessage) loadingMessage.style.display = "none";
+      
+      const calendarContent = document.getElementById("calendar-content");
+      if (calendarContent) calendarContent.style.display = "block";
 
     } catch (error) {
       console.error("データの取得に失敗しました:", error);
-      document.getElementById("loading-message").style.display = "none";
-      document.getElementById("today-loading").style.display = "none";
-      document.getElementById("error-message").style.display = "block";
+      
+      const loadingMsg = document.getElementById("loading-message");
+      if (loadingMsg) loadingMsg.style.display = "none";
+      
+      const todayLoading = document.getElementById("today-loading");
+      if (todayLoading) todayLoading.style.display = "none";
+      
+      const errorMsg = document.getElementById("error-message");
+      if (errorMsg) errorMsg.style.display = "block";
+
+      const todayContainer = document.getElementById("today-container");
+      if (todayContainer) {
+        todayContainer.innerHTML = `
+          <p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">
+            本日のイベント情報を取得できませんでした。下のカレンダーまたは公式情報をご確認ください。
+          </p>
+        `;
+      }
     }
   });
 </script>
@@ -570,8 +667,7 @@ main { position: relative; }
 .hero-text { text-align: center; color: #fff; max-width: 850px; padding: 30px 30px; background: rgba(10, 30, 50, 0.35); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 24px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
 .hero-subtitle { margin: 0 0 12px; font-size: 0.95rem; letter-spacing: 0.25em; font-weight: 700; color: #e0f4f8; }
 
-/* 👇 修正：文字間隔の分だけ右側に余白を作って、ど真ん中に相殺する（text-indent） */
-.hero-text h1 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 5.5rem); line-height: 1.1; letter-spacing: 0.05em; text-indent: 0.05em; font-weight: 700; white-space: nowrap; text-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
+.hero-text h1 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 5.5rem); line-height: 1.1; letter-spacing: 0.05em; text-indent: 0.05em; font-weight: 700; white-space: normal; word-break: keep-all; text-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
 
 .hero-lead { margin: 15px auto 0; font-size: 1.1rem; line-height: 1.8; font-weight: 500; color: rgba(255, 255, 255, 0.95); text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
 
@@ -593,36 +689,16 @@ main { position: relative; }
 .warning { color: var(--danger); font-weight: 700; }
 .update-date { display: inline-flex; align-items: center; padding: 4px 14px; margin-bottom: 20px; background: #f4f7f9; color: var(--text-soft); border: 1px solid rgba(44, 62, 80, 0.08); border-radius: 50px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; } .update-date::before { content: "🕒"; margin-right: 6px; font-size: 0.9rem; }
 
-/* 👇 修正：市場セクションをシンプルなリスト化 */
+/* 追加：市場セクションのシンプルなリスト化とボタン */
 .simple-list { margin: 0; padding-left: 1.5em; color: var(--text); font-size: 0.95rem; }
 .simple-list li { margin-bottom: 10px; }
-/* 👇 修正：上品でスッキリしたコンパクトボタン */
-.compact-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--blue) !important;
-  background: #fff;
-  border: 1px solid var(--blue-soft);
-  padding: 10px 22px;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(9, 132, 227, 0.08);
-  text-decoration: none !important;
-  transition: all 0.25s ease;
-}
-.compact-btn:hover {
-  background: var(--blue-soft);
-  border-color: var(--blue);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(9, 132, 227, 0.15);
-}
+.compact-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; color: var(--blue) !important; background: #fff; border: 1px solid var(--blue-soft); padding: 10px 22px; border-radius: 50px; box-shadow: 0 4px 10px rgba(9, 132, 227, 0.08); text-decoration: none !important; transition: all 0.25s ease; }
+.compact-btn:hover { background: var(--blue-soft); border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(9, 132, 227, 0.15); }
 
 /* 埋め込みエリア */
 .embed-box { padding: 30px; border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.08); box-shadow: var(--shadow-xs); }
 
-/* 👇 修正：アーカイブのボタン（アコーディオン）を細身でスマートに */
+/* アコーディオン */
 .modern-details { border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); box-shadow: var(--shadow-xs); }
 .modern-details summary { display: flex; align-items: center; justify-content: space-between; list-style: none; cursor: pointer; font-size: 1.05rem; font-weight: 800; color: var(--brand); padding: 15px 20px; }
 .modern-details summary::-webkit-details-marker { display: none; }
