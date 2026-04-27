@@ -160,7 +160,7 @@ import Layout from '../layouts/Layout.astro';
       <section class="section-block">
         <div class="section-header">
           <span class="emoji-icon icon-blue">⚓</span>
-          <h2 class="section-title">三崎のイベント主催者・観光情報 公式リンク集</h2>
+          <h2 class="section-title">三崎のイベント・観光リンク集</h2>
         </div>
         <p class="note-text">当サイトに掲載している情報の多くは、以下の公式団体・観光協会などが発信している内容をもとにしています。最新情報や詳細については、各公式サイトもあわせてご確認ください。（掲載順不同）</p>
         <div class="link-grid theme-blue">
@@ -1121,6 +1121,14 @@ a:hover {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
+.stylish-card h3 {
+  margin-top: 0;
+}
+
+.stylish-card p {
+  margin-bottom: 0;
+}
+
 .card-badge {
   align-self: flex-start;
   padding: 6px 14px;
@@ -1280,7 +1288,7 @@ a.contact-button:focus,
 }
 
 /* スマホ */
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .container {
     width: calc(100% - 30px);
   }
@@ -1311,7 +1319,7 @@ a.contact-button:focus,
   }
 
   .hero-text h1 {
-    font-size: clamp(2.35rem, 10vw, 3.15rem);
+    font-size: clamp(2.25rem, 9.2vw, 2.9rem);
     line-height: 1.08;
     letter-spacing: 0.03em;
     text-indent: 0.03em;
@@ -1326,8 +1334,8 @@ a.contact-button:focus,
 
   .hero-lead {
     margin: 12px auto 0;
-    font-size: 0.88rem;
-    line-height: 1.65;
+    font-size: 0.86rem;
+    line-height: 1.6;
   }
 
   .hero-text h1,
@@ -1337,69 +1345,136 @@ a.contact-button:focus,
   }
 
   .intro-simple {
-    margin: -6px auto 28px;
-    padding: 18px 18px 18px 20px;
+    margin: -6px auto 26px;
+    padding: 17px 17px 17px 19px;
     border-radius: 18px;
     border-left-width: 4px;
   }
 
   .intro-desc {
-    font-size: 0.94rem;
-    line-height: 1.75;
+    font-size: 0.92rem;
+    line-height: 1.72;
     margin-bottom: 10px;
   }
 
   .intro-warning {
     display: block;
     width: 100%;
-    font-size: 0.86rem;
-    line-height: 1.65;
+    font-size: 0.84rem;
+    line-height: 1.6;
     margin: 0 0 12px;
-    padding: 10px 12px;
+    padding: 9px 11px;
     border-radius: 14px;
     text-align: left;
   }
 
   .intro-details summary {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
   .intro-details-content {
-    font-size: 0.88rem;
-    line-height: 1.75;
+    font-size: 0.86rem;
+    line-height: 1.72;
   }
 
   .section-block {
-    padding: 24px 18px;
+    padding: 22px 16px;
     border-radius: 22px;
-    margin-bottom: 36px;
+    margin-bottom: 30px;
   }
 
   .section-header {
-    gap: 14px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  .section-header::after {
+    width: 64px;
+    height: 3px;
   }
 
   .emoji-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 16px;
-    font-size: 1.35rem;
-    flex-basis: 48px;
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+    border-radius: 14px;
+    font-size: 1.2rem;
   }
 
   .section-title {
-    font-size: 1.55rem;
+    font-size: 1.32rem;
     line-height: 1.35;
+    letter-spacing: 0.01em;
+  }
+
+  .sub-title {
+    font-size: 1.08rem;
+    margin-bottom: 14px;
   }
 
   .note-text {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .simple-list {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .compact-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 16px;
+    font-size: 0.9rem;
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  .empty-message {
+    padding: 15px 14px;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .event-card {
+    border-radius: 12px;
+  }
+
+  .card-title {
+    padding: 13px 15px;
+    font-size: 1rem;
+  }
+
+  .card-details {
+    padding: 13px 15px 16px;
+  }
+
+  .card-details p {
+    font-size: 0.9rem;
+    line-height: 1.65;
   }
 
   .embed-box {
-    padding: 20px 16px;
-    border-radius: 22px;
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+
+  .monthly-scroll-wrapper {
+    max-height: 560px;
+    padding-right: 0;
+  }
+
+  .monthly-heading {
+    font-size: 1rem;
+    margin-top: 20px;
   }
 
   .monthly-table thead {
@@ -1419,7 +1494,8 @@ a.contact-button:focus,
     padding: 10px 12px 10px 76px;
     position: relative;
     border-bottom: 1px solid #f4f7f9;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
   }
 
   .monthly-table td::before {
@@ -1429,7 +1505,7 @@ a.contact-button:focus,
     top: 10px;
     font-weight: 800;
     color: var(--text-soft);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
   }
 
   .monthly-table td.event-title-cell {
@@ -1442,8 +1518,55 @@ a.contact-button:focus,
     display: none;
   }
 
-  .card-container {
+  .modern-details summary {
+    padding: 13px 14px;
+    font-size: 0.95rem;
+  }
+
+  .archive-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .month-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .month-card ul {
+    font-size: 0.86rem;
+  }
+
+  .link-grid {
+    gap: 14px;
+  }
+
+  .stylish-card {
+    padding: 18px 18px;
+    border-radius: 18px;
+    border-width: 1.5px;
+  }
+
+  .stylish-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.12rem;
+    line-height: 1.45;
+  }
+
+  .stylish-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .card-badge {
+    padding: 4px 11px;
+    margin-bottom: 12px;
+    font-size: 0.72rem;
+  }
+
+  .section-block .note-text + .link-grid {
+    margin-top: 4px;
   }
 
   .gradient-bg {
@@ -1452,17 +1575,36 @@ a.contact-button:focus,
   }
 
   .contact-title {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
+    margin-bottom: 18px;
   }
 
   .contact-desc {
-    padding: 18px;
-    font-size: 0.9rem;
-    line-height: 1.75;
+    padding: 17px;
+    font-size: 0.88rem;
+    line-height: 1.72;
+    border-radius: 18px;
   }
 
   .contact-button {
     width: 100%;
+    padding: 14px 18px;
+    font-size: 0.94rem;
+  }
+
+  .policy-content {
+    padding: 16px;
+    font-size: 0.86rem;
+    line-height: 1.75;
+  }
+
+  .stylish-footer {
+    margin-top: 42px;
+    padding: 44px 18px;
+  }
+
+  .footer-logo {
+    font-size: 1.85rem;
   }
 }
 
@@ -1474,4 +1616,3 @@ a.contact-button:focus,
     opacity: 0.5;
   }
 }
-</style>
