@@ -21,29 +21,25 @@ import Layout from '../layouts/Layout.astro';
     </header>
 
     <div class="container">
-      <div class="disclaimer-banner">
-        <span aria-hidden="true">⚠️</span>
-        <p>当サイトは個人運営の非公式まとめサイトです。お出かけの際は<strong>必ず主催者の公式情報</strong>をご確認ください。</p>
-      </div>
-
-      <section class="section-block intro-compact">
-        <div class="section-header compact-header">
-          <span class="emoji-icon">🚶</span>
-          <h2 class="section-title">三崎で楽しむイベント・観光・町歩き</h2>
-        </div>
-        <p class="note-text">
-          三崎港・三崎下町商店街・城ヶ島周辺のイベントや、観光・町歩きに役立つ情報をまとめています。
+      
+      <section class="intro-simple">
+        <p class="intro-desc">
+          三崎港・三崎下町商店街・城ヶ島周辺のイベントや、観光・町歩きに役立つ情報をまとめた<strong>個人運営の非公式まとめサイト</strong>です。
         </p>
+        <p class="intro-warning">
+          <span aria-hidden="true">⚠️</span> お出かけの際は<strong>必ず主催者の公式情報</strong>をご確認ください。
+        </p>
+
         <details class="intro-details">
           <summary>三崎いこっか！について詳しく見る</summary>
           <div class="intro-details-content">
             <p>
-              三崎は、三崎港を中心に、まぐろグルメ、港町の商店街、海南神社、チャッキラコなどの伝統文化、城ヶ島の自然散策まで楽しめるエリアです。
-              週末のおでかけや日帰り観光では、イベントに合わせて三崎下町を歩いたり、海の駅うらり周辺で買い物をしたり、城ヶ島まで足を延ばして海辺の景色を楽しむこともできます。
+              三崎は、まぐろグルメや港町の商店街、海南神社、海の見える散策などを気軽に楽しめるエリアです。
+              イベントの前後に三崎下町を歩いたり、海の駅うらり周辺で買い物をしたり、城ヶ島で海辺の景色を楽しむのもおすすめです。
             </p>
             <p>
-              「三崎いこっか！」では、三崎イベント情報を中心に、観光、町歩き、港町散歩に役立つリンクや年間行事の目安をまとめています。
-              掲載情報は個人が収集した非公式情報のため、開催日・時間・中止情報などは必ず主催者の公式発表をご確認ください。
+              「三崎いこっか！」では、三崎・城ヶ島周辺のイベント情報を中心に、観光、町歩き、港町さんぽに役立つリンクや年間行事の目安をまとめています。
+              掲載情報は個人が独自に収集したもので、各イベントの主催者や関係団体とは一切関係ありません。
             </p>
           </div>
         </details>
@@ -373,7 +369,6 @@ import Layout from '../layouts/Layout.astro';
   document.addEventListener("DOMContentLoaded", async () => {
     const escapeHtml = (str = "") =>
       String(str).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
-
     const safeUrl = (url = "") => {
       try { const u = new URL(url); return ["http:", "https:"].includes(u.protocol) ? u.href : ""; } catch { return ""; }
     };
@@ -415,7 +410,6 @@ import Layout from '../layouts/Layout.astro';
 
       let todayHtml = "";
       if (todayEvents.length === 0) {
-        /* 👇 修正：ユーザーを下へ誘導する親切なメッセージに！ */
         todayHtml = `<p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">本日のイベント予定はありません。<br>直近の予定は下のイベント一覧をご確認ください。</p>`;
       } else {
         todayHtml = `<div class="card-container">`;
@@ -446,7 +440,6 @@ import Layout from '../layouts/Layout.astro';
             const lUrl = safeUrl(ev.locationUrl); const aUrl = safeUrl(ev.url);
             const lHtml = lUrl ? `<a href="${lUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.location)}</a>` : escapeHtml(ev.location);
             const aHtml = aUrl ? `<a href="${aUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.text)}</a>` : escapeHtml(ev.text);
-            // 👇 修正：スマホ向けの data-label 属性を復活させました！
             monthlyHtml += `
               <tr>
                 <td class="event-title-cell" data-label="イベント名">${escapeHtml(ev.title)}</td>
@@ -505,21 +498,22 @@ a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover 
 /* ヒーローエリア */
 .hero-header { position: relative; min-height: 400px; display: grid; place-items: center; overflow: hidden; margin-bottom: 40px; border-radius: 0 0 40px 40px; }
 .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.02); }
-.hero-text { text-align: center; color: #fff; max-width: 850px; padding: 30px; background: rgba(10, 30, 50, 0.35); backdrop-filter: blur(8px); border-radius: 24px; }
+.hero-text { text-align: center; color: #fff; max-width: 850px; padding: 30px; background: rgba(10, 30, 50, 0.5); backdrop-filter: blur(8px); border-radius: 24px; }
 .hero-text h1 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 5.5rem); letter-spacing: 0.05em; text-indent: 0.05em; font-weight: 700; }
 
-/* 注意書きバナー */
-.disclaimer-banner { display: flex; align-items: flex-start; gap: 10px; background: #e6f4ea; border: 1px solid #c3e6cb; color: #155724; padding: 12px 16px; border-radius: 12px; margin-bottom: 30px; font-size: 0.9rem; }
-
-/* SEOセクション（コンパクト版） */
-.intro-compact { padding: 24px 30px; margin-bottom: 35px; }
-.compact-header { margin-bottom: 16px; }
-.intro-details { margin-top: 8px; }
-.intro-details summary { cursor: pointer; color: var(--brand); font-weight: 800; font-size: 0.95rem; list-style: none; display: inline-flex; align-items: center; }
+/* 導入部・スリム化 */
+.intro-simple { margin: -12px auto 36px; padding: 18px 22px; max-width: 920px; text-align: left; background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(0, 136, 169, 0.12); border-radius: 18px; box-shadow: 0 6px 18px rgba(0, 80, 120, 0.04); }
+.intro-desc { font-size: 0.98rem; color: var(--text); margin: 0 0 6px; line-height: 1.65; }
+.intro-warning { font-size: 0.88rem; color: var(--danger); margin: 0 0 12px; font-weight: 700; }
+.intro-warning strong { text-decoration: underline; text-underline-offset: 3px; }
+.intro-details { display: block; text-align: left; background: transparent; border: none; border-radius: 0; padding: 0; max-width: none; margin: 0; }
+.intro-details summary { cursor: pointer; color: var(--brand); font-weight: 800; font-size: 0.9rem; list-style: none; display: inline-flex; align-items: center; justify-content: flex-start; }
 .intro-details summary::-webkit-details-marker { display: none; }
 .intro-details summary::after { content: "＋"; margin-left: 8px; font-weight: 900; }
 .intro-details[open] summary::after { content: "−"; }
-.intro-details-content { margin-top: 14px; padding-top: 14px; border-top: 1px dashed rgba(0, 136, 169, 0.15); color: var(--text-soft); font-size: 0.95rem; }
+.intro-details-content { margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(0, 136, 169, 0.2); color: var(--text-soft); font-size: 0.9rem; line-height: 1.7; }
+.intro-details-content p { margin: 0 0 10px; }
+.intro-details-content p:last-child { margin-bottom: 0; }
 
 /* セクション共通 */
 .section-block { margin-bottom: 50px; padding: 35px 40px; border-radius: 32px; background: var(--surface-strong); box-shadow: 0 10px 30px rgba(0, 80, 120, 0.06); }
@@ -534,7 +528,8 @@ a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover 
 
 /* 市場見学用 */
 .simple-list { padding-left: 1.5em; font-size: 0.95rem; }
-.compact-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; color: var(--blue) !important; background: #fff; border: 1px solid var(--blue-soft); padding: 10px 22px; border-radius: 50px; box-shadow: 0 4px 10px rgba(9, 132, 227, 0.08); }
+.compact-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; color: var(--blue) !important; background: #fff; border: 1px solid var(--blue-soft); padding: 10px 22px; border-radius: 50px; box-shadow: 0 4px 10px rgba(9, 132, 227, 0.08); text-decoration: none !important; transition: all 0.25s ease; }
+.compact-btn:hover { background: var(--blue-soft); border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(9, 132, 227, 0.15); }
 
 /* カードデザイン（本日のイベント & 数日間開催） */
 .card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; width: 100%; }
@@ -562,6 +557,7 @@ a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover 
 .archive-toggle::before, .policy-toggle::before { width: 12px; height: 2px; } 
 .archive-toggle::after, .policy-toggle::after { width: 2px; height: 12px; transition: 0.3s; }
 .modern-details[open] .archive-toggle::after, .modern-details[open] .policy-toggle::after { transform: translate(-50%, -50%) rotate(90deg) scaleY(0); }
+
 /* アーカイブ用グリッド */
 .archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
 .month-card { padding: 20px; border-radius: 16px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); position: relative; overflow: hidden; }
@@ -570,27 +566,27 @@ a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover 
 .month-card ul { list-style: none; padding: 0; font-size: 0.9rem; }
 .month-card li { position: relative; padding-left: 16px; margin-bottom: 8px; }
 .month-card li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+
 /* プライバシーポリシー用コンテンツ */
 .policy-content { padding: 20px; background: #fff; border-top: 1px dashed rgba(0, 136, 169, 0.12); border-radius: 0 0 16px 16px; }
 
 /* リンクカード集 */
 .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-.stylish-card { display: flex; flex-direction: column; padding: 28px 24px; border-radius: 20px; background: #ffffff; border: 2px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); } 
+.stylish-card { padding: 28px 24px; border-radius: 20px; border: 2px solid #cbd5e1; background: #fff; display: flex; flex-direction: column; transition: all 0.3s; }
 .stylish-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-.stylish-card h3 { margin: 0 0 8px; font-size: 1.2rem; font-weight: 900; color: var(--text); transition: 0.2s; } 
-.card-badge { align-self: flex-start; padding: 6px 14px; margin-bottom: 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; } 
-.stylish-card p { margin: 0; color: var(--text-soft); font-size: 0.95rem; line-height: 1.6; }
-.theme-blue .card-badge { background: var(--blue-soft); color: var(--blue); } .theme-blue .stylish-card:hover { border-color: var(--blue); } .theme-blue .stylish-card:hover h3 { color: var(--blue); } 
-.theme-green .card-badge { background: var(--green-soft); color: var(--green); } .theme-green .stylish-card:hover { border-color: var(--green); } .theme-green .stylish-card:hover h3 { color: var(--green); } 
-.theme-orange .card-badge { background: var(--orange-soft); color: var(--orange); } .theme-orange .stylish-card:hover { border-color: var(--orange); } .theme-orange .stylish-card:hover h3 { color: var(--orange); }
+.card-badge { align-self: flex-start; padding: 6px 14px; margin-bottom: 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; background: var(--blue-soft); color: var(--blue); }
+.theme-blue .card-badge { background: var(--blue-soft); color: var(--blue); }
+.theme-blue .stylish-card:hover { border-color: var(--blue); }
+.theme-green .card-badge { background: var(--green-soft); color: var(--green); }
+.theme-green .stylish-card:hover { border-color: var(--green); }
+.theme-orange .card-badge { background: var(--orange-soft); color: var(--orange); }
+.theme-orange .stylish-card:hover { border-color: var(--orange); }
 
 /* お問い合わせ */
-.gradient-bg { position: relative; overflow: hidden; padding: clamp(28px, 4vw, 52px); border-radius: 30px; background: radial-gradient(circle at top right, rgba(255,255,255,0.20), transparent 24%), linear-gradient(135deg, #135b85 0%, #1e7cad 52%, #50a8c5 100%); color: #fff; text-align: center; box-shadow: 0 24px 60px rgba(20, 87, 128, 0.22); }
-.gradient-bg::before, .gradient-bg::after { content: ""; position: absolute; border-radius: 999px; background: rgba(255,255,255,0.08); pointer-events: none; } .gradient-bg::before { width: 220px; height: 220px; right: -50px; top: -80px; } .gradient-bg::after { width: 180px; height: 180px; left: -40px; bottom: -80px; }
-.contact-title { position: relative; z-index: 1; margin: 0 0 22px; font-size: clamp(1.5rem, 3vw, 2.05rem); line-height: 1.35; font-weight: 900; text-align: center; }
-.contact-desc { position: relative; z-index: 1; margin-bottom: 24px; padding: 22px; border-radius: 22px; text-align: left; font-size: 0.95rem; color: rgba(255,255,255,0.96); background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); } .contact-desc p { margin: 0 0 10px; } .contact-desc p:last-child { margin: 0; } .contact-desc .warning { color: #FFEaa7; }
-.button-area { position: relative; z-index: 1; text-align: center; }
-.contact-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--brand) !important; font-weight: 800; font-size: 1rem; box-shadow: 0 12px 30px rgba(0,0,0,0.12); transition: 0.3s; text-decoration: none !important; } a.contact-button:hover, a.contact-button:focus, .contact-button:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); text-decoration: none !important; }
+.gradient-bg { padding: 40px; border-radius: 30px; background: linear-gradient(135deg, #135b85 0%, #1e7cad 52%, #50a8c5 100%); color: #fff; text-align: center; }
+.contact-desc { padding: 22px; border-radius: 22px; background: rgba(255,255,255,0.12); margin-bottom: 24px; text-align: left; }
+.contact-button { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--brand) !important; font-weight: 800; }
+
 /* フッター */
 .stylish-footer { margin-top: 60px; padding: 60px 20px; text-align: center; background: #1e272e; color: #808e9b; }
 .footer-logo { margin-bottom: 15px; color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; }
@@ -598,15 +594,23 @@ a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover 
 /* 📱 スマホ向けレスポンシブ */
 @media screen and (max-width:768px) {
   .container { width: calc(100% - 30px); }
-  .hero-header { min-height: 280px; }
+  .hero-header { min-height: 340px; }
+  .hero-bg { background-position: center top; }
+  .hero-text { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(10, 30, 50, 0.5); padding: 25px 15px; box-shadow: none; }
+  
+  /* 明るい写真でも文字がクッキリ読めるように文字影を強化 */
+  .hero-text h1, .hero-lead, .hero-subtitle { text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45); }
+  
+  .intro-simple { padding: 15px; margin-bottom: 30px; }
   .section-block { padding: 25px 20px; border-radius: 24px; }
-  .intro-compact { padding: 20px 18px; margin-bottom: 25px; }
+  
   .monthly-table thead { display: none; }
   .monthly-table tr { display: block; margin-bottom: 12px; border: 1px solid #e0e6ed; border-radius: 12px; }
   .monthly-table td { display: block; padding-left: 75px; position: relative; border-bottom: 1px solid #f4f7f9; }
   .monthly-table td::before { content: attr(data-label); position: absolute; left: 15px; font-weight: 800; color: var(--text-soft); }
   .monthly-table td.event-title-cell { padding-left: 15px; background: #f4f7f9; font-weight: 900; }
   .monthly-table td.event-title-cell::before { display: none; }
+  
   .contact-button { width: 100%; }
 }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
