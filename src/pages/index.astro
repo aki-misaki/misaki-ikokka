@@ -1,7 +1,3 @@
----
-import Layout from '../layouts/Layout.astro';
----
-
 <Layout 
   title="三崎いこっか！｜三崎・城ヶ島のイベントと観光・町歩き情報" 
   description="三崎港・三崎下町商店街・城ヶ島周辺のイベント、観光、町歩き、港町散歩に役立つ情報を集めた非公式ポータルサイトです。週末のおでかけ前に、開催情報や公式リンクを確認できます。">
@@ -21,13 +17,13 @@ import Layout from '../layouts/Layout.astro';
     </header>
 
     <div class="container">
-      
       <section class="intro-simple">
         <p class="intro-desc">
           三崎港・三崎下町商店街・城ヶ島周辺のイベントや、観光・町歩きに役立つ情報をまとめた<strong>個人運営の非公式まとめサイト</strong>です。
         </p>
         <p class="intro-warning">
-          <span aria-hidden="true">⚠️</span> お出かけの際は<strong>必ず主催者の公式情報</strong>をご確認ください。
+          <span aria-hidden="true">⚠️</span>
+          <span>お出かけの際は<strong>必ず主催者の公式情報</strong>をご確認ください。</span>
         </p>
 
         <details class="intro-details">
@@ -45,7 +41,7 @@ import Layout from '../layouts/Layout.astro';
         </details>
       </section>
 
-      <section class="section-block" style="background: linear-gradient(145deg, #ffffff, #f0f7f9); border: 2px solid rgba(0, 136, 169, 0.2);">
+      <section class="section-block today-section">
         <div class="section-header">
           <span class="emoji-icon icon-blue">☀️</span>
           <h2 class="section-title">本日のイベント</h2>
@@ -321,9 +317,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="contact-box gradient-bg">
           <h2 class="contact-title">三崎いこっか！お問い合わせ</h2>
           <div class="contact-desc">
-            <p>当サイトは個人運営のため、掲載対象は三崎エリア（三崎・城ヶ島周辺）のイベントに限っています。
+            <p>
+              当サイトは個人運営のため、掲載対象は三崎エリア（三崎・城ヶ島周辺）のイベントに限っています。
               また、各イベントの主催者や関係団体とは一切関係ありません。
-              掲載内容の修正・誤りのご指摘、イベント掲載のご依頼、ご質問などは、フォームよりお送りください。</p>
+              掲載内容の修正・誤りのご指摘、イベント掲載のご依頼、ご質問などは、フォームよりお送りください。
+            </p>
             <p class="warning" style="margin-top:10px;">※内容によっては、掲載や返信ができない場合がありますのでご了承ください。</p>
           </div>
           <div class="button-area">
@@ -368,15 +366,29 @@ import Layout from '../layouts/Layout.astro';
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
     const escapeHtml = (str = "") =>
-      String(str).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+      String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
     const safeUrl = (url = "") => {
-      try { const u = new URL(url); return ["http:", "https:"].includes(u.protocol) ? u.href : ""; } catch { return ""; }
+      try {
+        const u = new URL(url);
+        return ["http:", "https:"].includes(u.protocol) ? u.href : "";
+      } catch {
+        return "";
+      }
     };
 
     const bgImages = ['18.jpg', '7.jpg', '8.JPG', '10.JPG', '11.JPG', '12.JPG', '14.JPG', '16.jpg', '17.jpg', '5.jpg'];
     const randomImg = bgImages[Math.floor(Math.random() * bgImages.length)];
     const heroBg = document.querySelector('.hero-bg');
-    if (heroBg) { heroBg.style.backgroundImage = `linear-gradient(180deg, rgba(0, 50, 80, 0.2), rgba(0, 90, 120, 0.6)), url('https://cdn.jsdelivr.net/gh/aki-misaki/misaki-ikokka@main/images/${randomImg}')`; }
+
+    if (heroBg) {
+      heroBg.style.backgroundImage = `linear-gradient(180deg, rgba(0, 50, 80, 0.2), rgba(0, 90, 120, 0.6)), url('https://cdn.jsdelivr.net/gh/aki-misaki/misaki-ikokka@main/images/${randomImg}')`;
+    }
 
     const gasUrl = "https://script.google.com/macros/s/AKfycbyfN0Ng6HhjZ1tDPKSRNYce-3eklsHTpZwJDb4dptJlEqofg0KGntWp77rCyjDUNFu8/exec";
     
@@ -387,8 +399,11 @@ import Layout from '../layouts/Layout.astro';
 
       const updateDateEl = document.getElementById("calendar-update-date");
       if (updateDateEl) {
-        if (data.meta && data.meta.lastUpdated) { updateDateEl.innerText = `最終確認日：${escapeHtml(data.meta.lastUpdated)}`; }
-        else { updateDateEl.innerText = "最終確認日：未取得 ※開催可否は必ず公式情報をご確認ください"; }
+        if (data.meta && data.meta.lastUpdated) {
+          updateDateEl.innerText = `最終確認日：${escapeHtml(data.meta.lastUpdated)}`;
+        } else {
+          updateDateEl.innerText = "最終確認日：未取得 ※開催可否は必ず公式情報をご確認ください";
+        }
       }
 
       const now = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
@@ -398,26 +413,38 @@ import Layout from '../layouts/Layout.astro';
       let todayEvents = [];
 
       if (data.monthly) {
-        data.monthly.forEach(m => { m.events.forEach(ev => { if (ev.startIso && ev.startIso.startsWith(todayIsoStr)) todayEvents.push(ev); }); });
+        data.monthly.forEach(m => {
+          m.events.forEach(ev => {
+            if (ev.startIso && ev.startIso.startsWith(todayIsoStr)) todayEvents.push(ev);
+          });
+        });
       }
+
       if (data.spanEvents) {
         data.spanEvents.forEach(ev => {
-          const parseDateJP = (s) => { const m = s.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/); return m ? new Date(Number(m[1]), Number(m[2])-1, Number(m[3])).getTime() : 0; };
-          const sT = parseDateJP(ev.start); const eT = parseDateJP(ev.end);
+          const parseDateJP = (s) => {
+            const m = s.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+            return m ? new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3])).getTime() : 0;
+          };
+          const sT = parseDateJP(ev.start);
+          const eT = parseDateJP(ev.end);
           if (sT > 0 && eT > 0 && todayZero >= sT && todayZero <= eT) todayEvents.push(ev);
         });
       }
 
       let todayHtml = "";
       if (todayEvents.length === 0) {
-        todayHtml = `<p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">本日のイベント予定はありません。<br>直近の予定は下のイベント一覧をご確認ください。</p>`;
+        todayHtml = `<p class="empty-message">本日のイベント予定はありません。<br>直近の予定は下のイベント一覧をご確認ください。</p>`;
       } else {
         todayHtml = `<div class="card-container">`;
         todayEvents.forEach(ev => {
-          const tTitle = escapeHtml(ev.title); const tLoc = escapeHtml(ev.location || "場所未定");
-          const tUrl = safeUrl(ev.url); const lUrl = safeUrl(ev.locationUrl);
+          const tTitle = escapeHtml(ev.title);
+          const tLoc = escapeHtml(ev.location || "場所未定");
+          const tUrl = safeUrl(ev.url);
+          const lUrl = safeUrl(ev.locationUrl);
           const tLink = tUrl ? `<a href="${tUrl}" target="_blank" rel="noopener noreferrer">${tTitle}</a>` : tTitle;
           const lLink = lUrl ? `<a href="${lUrl}" target="_blank" rel="noopener noreferrer">${tLoc}</a>` : tLoc;
+
           todayHtml += `
             <div class="event-card blue-accent">
               <div class="card-title">${tLink}</div>
@@ -429,7 +456,9 @@ import Layout from '../layouts/Layout.astro';
         });
         todayHtml += `</div>`;
       }
-      const todayC = document.getElementById("today-container"); if (todayC) todayC.innerHTML = todayHtml;
+
+      const todayC = document.getElementById("today-container");
+      if (todayC) todayC.innerHTML = todayHtml;
 
       let monthlyHtml = "";
       if (data.monthly) {
@@ -437,9 +466,11 @@ import Layout from '../layouts/Layout.astro';
         data.monthly.forEach(monthGroup => {
           monthlyHtml += `<h4 class="monthly-heading">${escapeHtml(monthGroup.month)}</h4><table class="monthly-table"><thead><tr><th>イベント名</th><th>日付</th><th>時間</th><th>場所</th><th>リンク</th></tr></thead><tbody>`;
           monthGroup.events.forEach(ev => {
-            const lUrl = safeUrl(ev.locationUrl); const aUrl = safeUrl(ev.url);
+            const lUrl = safeUrl(ev.locationUrl);
+            const aUrl = safeUrl(ev.url);
             const lHtml = lUrl ? `<a href="${lUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.location)}</a>` : escapeHtml(ev.location);
             const aHtml = aUrl ? `<a href="${aUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.text)}</a>` : escapeHtml(ev.text);
+
             monthlyHtml += `
               <tr>
                 <td class="event-title-cell" data-label="イベント名">${escapeHtml(ev.title)}</td>
@@ -454,173 +485,989 @@ import Layout from '../layouts/Layout.astro';
         });
         monthlyHtml += `</div>`;
       }
-      const monthlyC = document.getElementById("monthly-container"); if (monthlyC) monthlyC.innerHTML = monthlyHtml;
+
+      const monthlyC = document.getElementById("monthly-container");
+      if (monthlyC) monthlyC.innerHTML = monthlyHtml;
 
       let spanHtml = `<div class="card-container">`;
       if (data.spanEvents) {
         data.spanEvents.forEach(ev => {
-          const lUrl = safeUrl(ev.locationUrl); const aUrl = safeUrl(ev.url);
+          const lUrl = safeUrl(ev.locationUrl);
+          const aUrl = safeUrl(ev.url);
           const lHtml = lUrl ? `<a href="${lUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.location)}</a>` : escapeHtml(ev.location);
           const aHtml = aUrl ? `<a href="${aUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.text)}</a>` : escapeHtml(ev.text);
-          spanHtml += `<div class="event-card"><div class="card-title">${escapeHtml(ev.title)}</div><div class="card-details"><p><span class="card-icon">🗓️</span><span>${escapeHtml(ev.start)} - ${escapeHtml(ev.end)}</span></p><p><span class="card-icon">📍</span>${lHtml}</p><p><span class="card-icon">🔗</span>${aHtml}</p></div></div>`;
+
+          spanHtml += `
+            <div class="event-card">
+              <div class="card-title">${escapeHtml(ev.title)}</div>
+              <div class="card-details">
+                <p><span class="card-icon">🗓️</span><span>${escapeHtml(ev.start)} - ${escapeHtml(ev.end)}</span></p>
+                <p><span class="card-icon">📍</span>${lHtml}</p>
+                <p><span class="card-icon">🔗</span>${aHtml}</p>
+              </div>
+            </div>`;
         });
       }
       spanHtml += `</div>`;
-      const spanC = document.getElementById("span-container"); if (spanC) spanC.innerHTML = spanHtml;
 
-      const loadingM = document.getElementById("loading-message"); if (loadingM) loadingM.style.display = "none";
-      const calC = document.getElementById("calendar-content"); if (calC) calC.style.display = "block";
+      const spanC = document.getElementById("span-container");
+      if (spanC) spanC.innerHTML = spanHtml;
+
+      const loadingM = document.getElementById("loading-message");
+      if (loadingM) loadingM.style.display = "none";
+
+      const calC = document.getElementById("calendar-content");
+      if (calC) calC.style.display = "block";
 
     } catch (err) {
       console.error(err);
-      const loadingM = document.getElementById("loading-message"); if (loadingM) loadingM.style.display = "none";
-      const todayL = document.getElementById("today-loading"); if (todayL) todayL.style.display = "none";
-      const errorM = document.getElementById("error-message"); if (errorM) errorM.style.display = "block";
-      const todayC = document.getElementById("today-container"); if (todayC) todayC.innerHTML = `<p style="font-weight: 700; color: var(--text-soft); margin: 0; padding: 18px; background: #fff; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">本日のイベント情報を取得できませんでした。下のカレンダーまたは公式情報をご確認ください。</p>`;
+
+      const loadingM = document.getElementById("loading-message");
+      if (loadingM) loadingM.style.display = "none";
+
+      const todayL = document.getElementById("today-loading");
+      if (todayL) todayL.style.display = "none";
+
+      const errorM = document.getElementById("error-message");
+      if (errorM) errorM.style.display = "block";
+
+      const todayC = document.getElementById("today-container");
+      if (todayC) {
+        todayC.innerHTML = `<p class="empty-message">本日のイベント情報を取得できませんでした。下のカレンダーまたは公式情報をご確認ください。</p>`;
+      }
     }
   });
 </script>
 
 <style is:global>
-html, body { overflow-x: hidden; }
-:root {
-  --bg: #f4f9f9; --surface-strong: rgba(255, 255, 255, 0.98); --text: #2c3e50; --text-soft: #576574;
-  --brand: #0088A9; --brand-strong: #00607A; --brand-soft: #e0f4f8; --blue: #0984e3; --blue-soft: #e3f2fd;
-  --green: #00b894; --green-soft: #e8f5e9; --orange: #f27a54; --orange-soft: #fdeee9; --danger: #d63031; 
-  --shadow-xs: 0 4px 14px rgba(0, 80, 120, 0.04); --radius-lg: 28px; --container: 1100px;
+html,
+body {
+  overflow-x: hidden;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; color: var(--text); font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; background-color: var(--bg); background-image: radial-gradient(circle at 15% 50px, rgba(0, 136, 169, 0.08), transparent 500px), radial-gradient(circle at 85% 150px, rgba(242, 122, 84, 0.05), transparent 500px); background-attachment: fixed; }
-a { color: var(--brand); text-decoration: none; transition: all 0.2s; } a:hover { color: var(--brand-strong); text-decoration: underline; }
-.container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
 
-/* ヒーローエリア */
-.hero-header { position: relative; min-height: 400px; display: grid; place-items: center; overflow: hidden; margin-bottom: 40px; border-radius: 0 0 40px 40px; }
-.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.02); }
-/* 👇 復活：.hero-overlayのCSSを追加 */
-.hero-overlay { position: relative; z-index: 1; width: 100%; padding: 40px 20px 60px; display: flex; justify-content: center; align-items: center; }
-.hero-text { text-align: center; color: #fff; max-width: 850px; padding: 30px; background: rgba(10, 30, 50, 0.5); backdrop-filter: blur(8px); border-radius: 24px; }
-.hero-text h1 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 5.5rem); letter-spacing: 0.05em; text-indent: 0.05em; font-weight: 700; }
+:root {
+  --bg: #f4f9f9;
+  --surface-strong: rgba(255, 255, 255, 0.98);
+  --text: #2c3e50;
+  --text-soft: #576574;
+  --brand: #0088A9;
+  --brand-strong: #00607A;
+  --brand-soft: #e0f4f8;
+  --blue: #0984e3;
+  --blue-soft: #e3f2fd;
+  --green: #00b894;
+  --green-soft: #e8f5e9;
+  --orange: #f27a54;
+  --orange-soft: #fdeee9;
+  --danger: #d63031;
+  --shadow-xs: 0 4px 14px rgba(0, 80, 120, 0.04);
+  --radius-lg: 28px;
+  --container: 1100px;
+}
 
-/* 導入部・スリム化 */
-/* 👇 修正：左ライン付きの洗練されたカード風スタイルに */
-.intro-simple { position: relative; margin: -12px auto 36px; padding: 18px 22px 18px 24px; max-width: 920px; text-align: left; background: rgba(255, 255, 255, 0.78); border: 1px solid rgba(0, 136, 169, 0.12); border-left: 5px solid var(--brand); border-radius: 18px; box-shadow: 0 6px 18px rgba(0, 80, 120, 0.04); }
-.intro-desc { font-size: 0.98rem; color: var(--text); margin: 0 0 6px; line-height: 1.65; }
-/* 👇 修正：やわらかい角丸バッジ風の警告表示 */
-.intro-warning { display: inline-flex; align-items: center; gap: 4px; font-size: 0.86rem; color: var(--danger); margin: 2px 0 12px; padding: 4px 10px; background: rgba(214, 48, 49, 0.06); border-radius: 999px; font-weight: 700; }
-.intro-warning strong { text-decoration: underline; text-underline-offset: 3px; }
-.intro-details { display: block; text-align: left; background: transparent; border: none; border-radius: 0; padding: 0; max-width: none; margin: 0; }
-.intro-details summary { cursor: pointer; color: var(--brand); font-weight: 800; font-size: 0.9rem; list-style: none; display: inline-flex; align-items: center; justify-content: flex-start; }
-.intro-details summary::-webkit-details-marker { display: none; }
-.intro-details summary::after { content: "＋"; margin-left: 8px; font-weight: 900; }
-.intro-details[open] summary::after { content: "−"; }
-.intro-details-content { margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(0, 136, 169, 0.2); color: var(--text-soft); font-size: 0.9rem; line-height: 1.7; }
-.intro-details-content p { margin: 0 0 10px; }
-.intro-details-content p:last-child { margin-bottom: 0; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.8;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 50px, rgba(0, 136, 169, 0.08), transparent 500px),
+    radial-gradient(circle at 85% 150px, rgba(242, 122, 84, 0.05), transparent 500px);
+  background-attachment: fixed;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+a:hover {
+  color: var(--brand-strong);
+  text-decoration: underline;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* ヒーロー */
+.hero-header {
+  position: relative;
+  min-height: 400px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin-bottom: 40px;
+  border-radius: 0 0 40px 40px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 40px 20px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-text {
+  text-align: center;
+  color: #fff;
+  max-width: 850px;
+  padding: 30px;
+  background: rgba(10, 30, 50, 0.42);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 24px;
+}
+
+.hero-text h1 {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 8vw, 5.5rem);
+  letter-spacing: 0.05em;
+  text-indent: 0.05em;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  margin: 0 0 10px;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+}
+
+.hero-lead {
+  margin: 16px 0 0;
+  font-weight: 700;
+}
+
+/* 導入部 */
+.intro-simple {
+  position: relative;
+  margin: -12px auto 36px;
+  padding: 18px 22px 18px 24px;
+  max-width: 920px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(0, 136, 169, 0.12);
+  border-left: 5px solid var(--brand);
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0, 80, 120, 0.05);
+}
+
+.intro-desc {
+  font-size: 0.98rem;
+  color: var(--text);
+  margin: 0 0 8px;
+  line-height: 1.65;
+}
+
+.intro-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.86rem;
+  color: var(--danger);
+  margin: 2px 0 12px;
+  padding: 5px 12px;
+  background: rgba(214, 48, 49, 0.06);
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.intro-warning strong {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.intro-details {
+  display: block;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  max-width: none;
+  margin: 0;
+}
+
+.intro-details summary {
+  cursor: pointer;
+  color: var(--brand);
+  font-weight: 800;
+  font-size: 0.9rem;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.intro-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.intro-details summary::after {
+  content: "＋";
+  margin-left: 8px;
+  font-weight: 900;
+}
+
+.intro-details[open] summary::after {
+  content: "−";
+}
+
+.intro-details-content {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed rgba(0, 136, 169, 0.2);
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.intro-details-content p {
+  margin: 0 0 10px;
+}
+
+.intro-details-content p:last-child {
+  margin-bottom: 0;
+}
 
 /* セクション共通 */
-.section-block { margin-bottom: 50px; padding: 35px 40px; border-radius: 32px; background: var(--surface-strong); box-shadow: 0 10px 30px rgba(0, 80, 120, 0.06); }
-.section-header { display: flex; align-items: center; gap: 18px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid rgba(0, 136, 169, 0.1); position: relative; }
-.section-header::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 80px; height: 4px; background: linear-gradient(90deg, var(--brand), var(--orange)); border-radius: 4px; }
-.emoji-icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 18px; background: #fff; box-shadow: var(--shadow-xs); font-size: 1.5rem; }
-.section-title { margin: 0; font-size: clamp(1.5rem, 3vw, 1.95rem); font-weight: 900; color: var(--brand-strong); }
-.sub-title { margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--brand); font-size: 1.25rem; font-weight: 900; color: var(--brand-strong); }
-.note-text { margin: 0 0 20px; color: var(--text-soft); font-size: 0.95rem; }
-.warning { color: var(--danger); font-weight: 700; }
-.update-date { display: inline-flex; align-items: center; padding: 4px 14px; margin-bottom: 20px; background: #f4f7f9; border-radius: 50px; font-size: 0.85rem; font-weight: 700; }
+.section-block {
+  margin-bottom: 50px;
+  padding: 35px 40px;
+  border-radius: 32px;
+  background: var(--surface-strong);
+  box-shadow: 0 10px 30px rgba(0, 80, 120, 0.06);
+}
 
-/* 市場見学用 */
-.simple-list { padding-left: 1.5em; font-size: 0.95rem; }
-.compact-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; color: var(--blue) !important; background: #fff; border: 1px solid var(--blue-soft); padding: 10px 22px; border-radius: 50px; box-shadow: 0 4px 10px rgba(9, 132, 227, 0.08); text-decoration: none !important; transition: all 0.25s ease; }
-.compact-btn:hover { background: var(--blue-soft); border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(9, 132, 227, 0.15); }
+.today-section {
+  background: linear-gradient(145deg, #ffffff, #f0f7f9);
+  border: 2px solid rgba(0, 136, 169, 0.2);
+}
 
-/* カードデザイン（本日のイベント & 数日間開催） */
-.card-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; width: 100%; }
-.event-card { border: 1px solid #e0e6ed; border-radius: 12px; background: #fff; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; }
-.event-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,80,120,0.08); }
-.event-card.blue-accent { border-left: 5px solid var(--blue); }
-.card-title { font-weight: 900; font-size: 1.1rem; background: #f4f7f9; padding: 15px 20px; border-bottom: 1px dashed #cbd5e1; }
-.card-details { padding: 15px 20px 20px; }
-.card-details p { margin: 8px 0; color: var(--text-soft); display: flex; align-items: flex-start; font-size: 0.95rem; }
-.card-icon { margin-right: 8px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(0, 136, 169, 0.1);
+  position: relative;
+}
+
+.section-header::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--orange));
+  border-radius: 4px;
+}
+
+.emoji-icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow-xs);
+  font-size: 1.5rem;
+  flex: 0 0 54px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 1.95rem);
+  font-weight: 900;
+  color: var(--brand-strong);
+  line-height: 1.35;
+}
+
+.sub-title {
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--brand);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--brand-strong);
+}
+
+.note-text {
+  margin: 0 0 20px;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.warning {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.update-date {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  margin-bottom: 20px;
+  background: #f4f7f9;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.empty-message {
+  font-weight: 700;
+  color: var(--text-soft);
+  margin: 0;
+  padding: 18px;
+  background: #fff;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px dashed #cbd5e1;
+}
+
+/* 市場見学 */
+.simple-list {
+  padding-left: 1.5em;
+  font-size: 0.95rem;
+}
+
+.compact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--blue) !important;
+  background: #fff;
+  border: 1px solid var(--blue-soft);
+  padding: 10px 22px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(9, 132, 227, 0.08);
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+}
+
+.compact-btn:hover {
+  background: var(--blue-soft);
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(9, 132, 227, 0.15);
+}
+
+/* イベントカード */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  width: 100%;
+}
+
+.event-card {
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,80,120,0.08);
+}
+
+.event-card.blue-accent {
+  border-left: 5px solid var(--blue);
+}
+
+.card-title {
+  font-weight: 900;
+  font-size: 1.1rem;
+  background: #f4f7f9;
+  padding: 15px 20px;
+  border-bottom: 1px dashed #cbd5e1;
+}
+
+.card-details {
+  padding: 15px 20px 20px;
+}
+
+.card-details p {
+  margin: 8px 0;
+  color: var(--text-soft);
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.95rem;
+}
+
+.card-icon {
+  margin-right: 8px;
+}
 
 /* 埋め込み・テーブル */
-.embed-box { padding: 30px; border-radius: var(--radius-lg); background: #fff; border: 1px solid rgba(0, 136, 169, 0.08); }
-.monthly-scroll-wrapper { max-height: 600px; overflow-y: auto; padding-right: 8px; }
-.monthly-heading { margin-top: 25px; margin-bottom: 10px; color: var(--brand-strong); font-weight: 800; }
-.monthly-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-.monthly-table th, .monthly-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e0e6ed; word-wrap: break-word; font-size: 0.95rem; }
-.monthly-table th { background: #f4f7f9; font-weight: bold; }
-.event-title-cell { font-weight: 800; }
+.embed-box {
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  border: 1px solid rgba(0, 136, 169, 0.08);
+}
 
-/* アコーディオン切り替えアイコン（アーカイブ ＆ プライバシーポリシー共通） */
-.modern-details summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 1.05rem; font-weight: 800; color: var(--brand); padding: 15px 20px; list-style: none; }
-.archive-toggle, .policy-toggle { position: relative; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-soft); flex: 0 0 28px; }
-.archive-toggle::before, .archive-toggle::after, .policy-toggle::before, .policy-toggle::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--brand); transform: translate(-50%, -50%); }
-.archive-toggle::before, .policy-toggle::before { width: 12px; height: 2px; } 
-.archive-toggle::after, .policy-toggle::after { width: 2px; height: 12px; transition: 0.3s; }
-.modern-details[open] .archive-toggle::after, .modern-details[open] .policy-toggle::after { transform: translate(-50%, -50%) rotate(90deg) scaleY(0); }
+.monthly-scroll-wrapper {
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
 
-/* アーカイブ用グリッド */
-.archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
-.month-card { padding: 20px; border-radius: 16px; background: #fff; border: 1px solid rgba(0, 136, 169, 0.1); position: relative; overflow: hidden; }
-.month-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--brand); }
-.month-header { margin-bottom: 12px; font-weight: 900; color: var(--brand); }
-.month-card ul { list-style: none; padding: 0; font-size: 0.9rem; }
-.month-card li { position: relative; padding-left: 16px; margin-bottom: 8px; }
-.month-card li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+.monthly-heading {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: var(--brand-strong);
+  font-weight: 800;
+}
 
-/* プライバシーポリシー用コンテンツ */
-.policy-content { padding: 20px; background: #fff; border-top: 1px dashed rgba(0, 136, 169, 0.12); border-radius: 0 0 16px 16px; }
+.monthly-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
 
-/* リンクカード集 */
-.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-.stylish-card { padding: 28px 24px; border-radius: 20px; border: 2px solid #cbd5e1; background: #fff; display: flex; flex-direction: column; transition: all 0.3s; }
-.stylish-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-.card-badge { align-self: flex-start; padding: 6px 14px; margin-bottom: 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; background: var(--blue-soft); color: var(--blue); }
-.theme-blue .card-badge { background: var(--blue-soft); color: var(--blue); }
-.theme-blue .stylish-card:hover { border-color: var(--blue); }
-.theme-green .card-badge { background: var(--green-soft); color: var(--green); }
-.theme-green .stylish-card:hover { border-color: var(--green); }
-.theme-orange .card-badge { background: var(--orange-soft); color: var(--orange); }
-.theme-orange .stylish-card:hover { border-color: var(--orange); }
+.monthly-table th,
+.monthly-table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e6ed;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+}
+
+.monthly-table th {
+  background: #f4f7f9;
+  font-weight: bold;
+}
+
+.event-title-cell {
+  font-weight: 800;
+}
+
+/* アコーディオン */
+.modern-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--brand);
+  padding: 15px 20px;
+  list-style: none;
+}
+
+.modern-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.archive-toggle,
+.policy-toggle {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  flex: 0 0 28px;
+}
+
+.archive-toggle::before,
+.archive-toggle::after,
+.policy-toggle::before,
+.policy-toggle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: var(--brand);
+  transform: translate(-50%, -50%);
+}
+
+.archive-toggle::before,
+.policy-toggle::before {
+  width: 12px;
+  height: 2px;
+}
+
+.archive-toggle::after,
+.policy-toggle::after {
+  width: 2px;
+  height: 12px;
+  transition: 0.3s;
+}
+
+.modern-details[open] .archive-toggle::after,
+.modern-details[open] .policy-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg) scaleY(0);
+}
+
+/* 年間イベント */
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+}
+
+.month-card {
+  padding: 20px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(0, 136, 169, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.month-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--brand);
+}
+
+.month-header {
+  margin-bottom: 12px;
+  font-weight: 900;
+  color: var(--brand);
+}
+
+.month-card ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.month-card li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 8px;
+}
+
+.month-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+/* プライバシーポリシー */
+.policy-content {
+  padding: 20px;
+  background: #fff;
+  border-top: 1px dashed rgba(0, 136, 169, 0.12);
+  border-radius: 0 0 16px 16px;
+}
+
+/* リンクカード */
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.stylish-card {
+  padding: 28px 24px;
+  border-radius: 20px;
+  border: 2px solid #cbd5e1;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+}
+
+.stylish-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card-badge {
+  align-self: flex-start;
+  padding: 6px 14px;
+  margin-bottom: 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.theme-blue .card-badge {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.theme-blue .stylish-card:hover {
+  border-color: var(--blue);
+}
+
+.theme-green .card-badge {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.theme-green .stylish-card:hover {
+  border-color: var(--green);
+}
+
+.theme-orange .card-badge {
+  background: var(--orange-soft);
+  color: var(--orange);
+}
+
+.theme-orange .stylish-card:hover {
+  border-color: var(--orange);
+}
 
 /* お問い合わせ */
-.gradient-bg { padding: 40px; border-radius: 30px; background: linear-gradient(135deg, #135b85 0%, #1e7cad 52%, #50a8c5 100%); color: #fff; text-align: center; }
-.contact-desc { padding: 22px; border-radius: 22px; background: rgba(255,255,255,0.12); margin-bottom: 24px; text-align: left; }
-.contact-button { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--brand) !important; font-weight: 800; }
+.gradient-bg {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 4vw, 52px);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,0.20), transparent 24%),
+    linear-gradient(135deg, #135b85 0%, #1e7cad 52%, #50a8c5 100%);
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(20, 87, 128, 0.22);
+}
+
+.gradient-bg::before,
+.gradient-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  pointer-events: none;
+}
+
+.gradient-bg::before {
+  width: 220px;
+  height: 220px;
+  right: -50px;
+  top: -80px;
+}
+
+.gradient-bg::after {
+  width: 180px;
+  height: 180px;
+  left: -40px;
+  bottom: -80px;
+}
+
+.contact-title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 22px;
+  font-size: clamp(1.45rem, 3vw, 2.05rem);
+  line-height: 1.35;
+  font-weight: 900;
+  text-align: center;
+}
+
+.contact-desc {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+  padding: 22px;
+  border-radius: 22px;
+  text-align: left;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.96);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.contact-desc p {
+  margin: 0 0 10px;
+}
+
+.contact-desc p:last-child {
+  margin: 0;
+}
+
+.contact-desc .warning {
+  color: #FFEaa7;
+}
+
+.button-area {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 28px;
+  border-radius: 50px;
+  background: #fff;
+  color: var(--brand) !important;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  transition: 0.3s;
+  text-decoration: none !important;
+}
+
+a.contact-button:hover,
+a.contact-button:focus,
+.contact-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  text-decoration: none !important;
+}
 
 /* フッター */
-.stylish-footer { margin-top: 60px; padding: 60px 20px; text-align: center; background: #1e272e; color: #808e9b; }
-.footer-logo { margin-bottom: 15px; color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; }
-
-/* 📱 スマホ向けレスポンシブ */
-@media screen and (max-width:768px) {
-  .container { width: calc(100% - 30px); }
-  .hero-header { min-height: 340px; }
-  .hero-bg { background-position: center top; }
-  /* 👇 復活：スマホ用の.hero-overlay指定を追加！ */
-  .hero-overlay { padding: 32px 18px 44px; }
-  .hero-text { width: min(100%, 340px); margin: 0 auto; backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(10, 30, 50, 0.5); padding: 25px 15px; box-shadow: none; }
-  
-  /* スマホの文字サイズをダイナミックに調整し、影をつけて読みやすく */
-  .hero-text h1 { font-size: clamp(2.4rem, 12vw, 4rem); line-height: 1.1; }
-  .hero-subtitle { margin: 0 0 8px; font-size: 0.78rem; letter-spacing: 0.16em; }
-  .hero-lead { margin: 12px auto 0; font-size: 0.92rem; line-height: 1.65; }
-  .hero-text h1, .hero-lead, .hero-subtitle { text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45); }
-  
-  .intro-simple { padding: 15px; margin-bottom: 30px; }
-  .section-block { padding: 25px 20px; border-radius: 24px; }
-  
-  .monthly-table thead { display: none; }
-  .monthly-table tr { display: block; margin-bottom: 12px; border: 1px solid #e0e6ed; border-radius: 12px; }
-  .monthly-table td { display: block; padding-left: 75px; position: relative; border-bottom: 1px solid #f4f7f9; }
-  .monthly-table td::before { content: attr(data-label); position: absolute; left: 15px; font-weight: 800; color: var(--text-soft); }
-  .monthly-table td.event-title-cell { padding-left: 15px; background: #f4f7f9; font-weight: 900; }
-  .monthly-table td.event-title-cell::before { display: none; }
-  
-  .contact-button { width: 100%; }
+.stylish-footer {
+  margin-top: 60px;
+  padding: 60px 20px;
+  text-align: center;
+  background: #1e272e;
+  color: #808e9b;
 }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+.footer-logo {
+  margin-bottom: 15px;
+  color: #fff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+}
+
+/* スマホ */
+@media screen and (max-width:768px) {
+  .container {
+    width: calc(100% - 30px);
+  }
+
+  .hero-header {
+    min-height: 300px;
+    margin-bottom: 28px;
+    border-radius: 0 0 28px 28px;
+  }
+
+  .hero-bg {
+    background-position: center top;
+  }
+
+  .hero-overlay {
+    padding: 28px 18px 36px;
+  }
+
+  .hero-text {
+    width: min(100%, 330px);
+    margin: 0 auto;
+    padding: 22px 18px;
+    border-radius: 22px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(10, 30, 50, 0.46);
+    box-shadow: 0 14px 34px rgba(0, 40, 70, 0.18);
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2.35rem, 10vw, 3.15rem);
+    line-height: 1.08;
+    letter-spacing: 0.03em;
+    text-indent: 0.03em;
+    word-break: keep-all;
+  }
+
+  .hero-subtitle {
+    margin: 0 0 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+  }
+
+  .hero-lead {
+    margin: 12px auto 0;
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .hero-text h1,
+  .hero-lead,
+  .hero-subtitle {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+  }
+
+  .intro-simple {
+    margin: -6px auto 28px;
+    padding: 18px 18px 18px 20px;
+    border-radius: 18px;
+    border-left-width: 4px;
+  }
+
+  .intro-desc {
+    font-size: 0.94rem;
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+
+  .intro-warning {
+    display: block;
+    width: 100%;
+    font-size: 0.86rem;
+    line-height: 1.65;
+    margin: 0 0 12px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    text-align: left;
+  }
+
+  .intro-details summary {
+    font-size: 0.9rem;
+  }
+
+  .intro-details-content {
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+
+  .section-block {
+    padding: 24px 18px;
+    border-radius: 22px;
+    margin-bottom: 36px;
+  }
+
+  .section-header {
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .emoji-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    font-size: 1.35rem;
+    flex-basis: 48px;
+  }
+
+  .section-title {
+    font-size: 1.55rem;
+    line-height: 1.35;
+  }
+
+  .note-text {
+    font-size: 0.92rem;
+  }
+
+  .embed-box {
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+
+  .monthly-table thead {
+    display: none;
+  }
+
+  .monthly-table tr {
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .monthly-table td {
+    display: block;
+    padding: 10px 12px 10px 76px;
+    position: relative;
+    border-bottom: 1px solid #f4f7f9;
+    font-size: 0.9rem;
+  }
+
+  .monthly-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 14px;
+    top: 10px;
+    font-weight: 800;
+    color: var(--text-soft);
+    font-size: 0.82rem;
+  }
+
+  .monthly-table td.event-title-cell {
+    padding-left: 14px;
+    background: #f4f7f9;
+    font-weight: 900;
+  }
+
+  .monthly-table td.event-title-cell::before {
+    display: none;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .gradient-bg {
+    padding: 28px 20px;
+    border-radius: 24px;
+  }
+
+  .contact-title {
+    font-size: 1.45rem;
+  }
+
+  .contact-desc {
+    padding: 18px;
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .contact-button {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
 </style>
